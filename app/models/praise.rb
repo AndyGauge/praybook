@@ -1,0 +1,2 @@
+class Praise < Post
+end

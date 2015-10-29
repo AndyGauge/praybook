@@ -1,0 +1,2 @@
+class PraisesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class Prayer < Post
+end
