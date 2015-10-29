@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'prayer/show'
+
+  get 'prayer/create'
+
+  get 'prayer/edit'
+
+  get 'prayer/destroy'
+
+  get 'prayer/all'
+
   resources :admins
   resources :users
   resources :people
