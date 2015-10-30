@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
-  get 'prayer/show'
-
-  get 'prayer/create'
-
-  get 'prayer/edit'
-
-  get 'prayer/destroy'
-
-  get 'prayer/all'
-
-  resources :admins
-  resources :users
-  resources :people
-  resources :prayers
-  resources :praises
-  resources :posts
+  #resources :admins
+  resources :users, :only => [:create, :new, :show, :edit]
+  #resources :people  #TODO: create people without accounts via refferences
+  resources :prayers, :only => [:index, :show]
+  resources :praises, :only => [:index, :show]
+  #resources :posts  #POSTS are not publicly consumed, use children
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

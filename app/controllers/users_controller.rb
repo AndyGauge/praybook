@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 			render :action => 'edit'
 		end
 	end
+	
+	def new
+	end
 
 	def show
 	end
