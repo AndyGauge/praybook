@@ -1,3 +1,5 @@
 class User < Person
-  has_many :posts
+	validates :email, confirmation: true
+	has_many :posts
+	has_secure_password
 end
