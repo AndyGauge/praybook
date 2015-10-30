@@ -1,6 +1,6 @@
 <% bootstrap_form_for(@user) do |user_form| %>
-	<%= user_form.name :name %>
-	<%= user_form.email :email %>
+	<%= user_form.text_field :name %>
+	<%= user_form.email_field :email %>
 	<%= user_form.password_field :password %>
 	<%= user_form.password_field :password_confirmation %>
 	<%= user_form.submit %>
