@@ -6,6 +6,6 @@ class Person < ActiveRecord::Base
 	#TODO: add texting capibility
 	#validates :name, length: {minimum: 4}
 	def capitalize_name
-		name = name.titleize
+		@name = @name.to_s.titleize
 	end
 end
