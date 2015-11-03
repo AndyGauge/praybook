@@ -13,5 +13,7 @@ class ApplicationController < ActionController::Base
   	# In single table inheritance it would appear that the type is nil for Person
   	!!current_user.type
   end
-
+  def slay_current_user
+  	@curent_user = session[:current_user_id] = nil
+  end
 end
