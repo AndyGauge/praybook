@@ -1,4 +1,4 @@
-<% @css_class_alias = {:alert => 'bg-danger', :notice -> 'bg-warning'}; @css_class_alias.default = ""; %> 
+<% @css_class_alias = {:alert => 'bg-danger', :notice => 'bg-warning'}; @css_class_alias.default = ""; %> 
 <% flash.each do |name, msg| -%>
 	<%= content_tag :p, msg, class: @css_class_alias[name] %>
 <% end -%>
