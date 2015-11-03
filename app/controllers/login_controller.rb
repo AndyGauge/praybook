@@ -3,10 +3,11 @@ class LoginController < ApplicationController
 		#@user = guest? ? User.new : current_user
 	end
 	def create
-		user = User.find_by_email(params[:email])
-		if user && user.authenticate(params[:password])
-			session[:current_user_id] = user.id
+		@user = User.find_by_email(params[:email])
+		if @user && @user.authenticate(params[:password])
+			session[:current_user_id] = @user.id
 			#render the logged on page
+			
 		else
 			redirect_to login_url, alert: "Failed to logon"
 		end
