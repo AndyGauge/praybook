@@ -6,7 +6,7 @@ person_with_name:
   name: bob edwards
 
 person_with_capitalized_name:
-	name: Bob Never
+  name: Bob Never
 
 person_with_email:
   name: Laurnece Rose
