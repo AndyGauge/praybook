@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  type: 
+guest:
 
-two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  type: 
+person_with_name:
+  name: bob edwards
+
+person_with_capitalized_name:
+	name: Bob Never
+
+person_with_email:
+  name: Laurnece Rose
+  email: lrose@gmail.com
