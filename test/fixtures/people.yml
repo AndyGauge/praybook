@@ -6,7 +6,7 @@ guest:
 person_with_name:
   name: bob edwards
 
-person_with_capitalized_name:
+person_with_capital_name:
   name: Bob Never
 
 person_with_email:
