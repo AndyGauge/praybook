@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  #resources :admins
+  
   resources :users, :only => [:create, :new, :edit]
-  #resources :people  #TODO: create people without accounts via refferences
+  
   resources :prayers, :only => [:index, :show]
   resources :praises, :only => [:index, :show]
+
   root 'users#new'
-  #resources :posts  #POSTS are not publicly consumed, use children
+  
+  #Getting specific with the login methods
+  get '/login', to: 'login#new'
+  post '/login', to: 'login#create'
+  post '/logout', to: 'login#destroy'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,6 @@
+<%= render 'shared/flash' %>
+<%= bootstrap_form_tag url: '/login' do |login_form| %>
+	<%= login_form.email_field :email %>
+	<%= login_form.password_field :password %>
+	<%= login_form.submit "Log in" %>
+<% end %>
