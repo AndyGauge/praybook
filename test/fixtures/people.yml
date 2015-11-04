@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 guest:
+  name:
 
 person_with_name:
   name: bob edwards
