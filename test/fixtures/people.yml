@@ -12,3 +12,14 @@ person_with_capital_name:
 person_with_email:
   name: Laurnece Rose
   email: lrose@gmail.com
+
+email_user_who_is_valid:
+  email: bob@email.com
+  name: bob
+  password_digest: <%= BCrypt::Password.create("password") %>
+  type: User
+
+email_user_with_bad_password:
+  email: bobtoo@email.com
+  name: Bob bobster
+  type: User
