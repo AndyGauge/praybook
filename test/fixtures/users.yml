@@ -1,10 +1,9 @@
 email_user_who_is_valid:
   email: bob@email.com
   name: bob
-  password: password
-  password_confirmation: password
+  password_digest: <%= BCrypt::Password.create("password") %>
 
 email_user_with_bad_password:
   email: bobtoo@email.com
   name: Bob bobster
-  password: once
+  password_digest: 
