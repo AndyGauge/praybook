@@ -14,7 +14,7 @@ class LoginControllerTest < ActionController::TestCase
 
 	test "should login successfully" do
 		post :create, {email: "bob@email.com", password: "password"}
-		assert_empty flash[:alert]
+		assert_nil flash[:alert]
 		assert_not_nil session[:current_user_id]
 		assert_response :success
 	end
