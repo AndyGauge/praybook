@@ -17,4 +17,5 @@ class LoginControllerTest < ActionController::TestCase
 		assert_empty flash[:alert]
 		assert_not_nil session[:current_user_id]
 		assert_response :success
+	end
 end
