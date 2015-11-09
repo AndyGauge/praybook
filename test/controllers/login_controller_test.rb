@@ -9,7 +9,7 @@ class LoginControllerTest < ActionController::TestCase
 	test "should fail login with bad attempt" do
 		post :create, {email: "lrose@gmail.com", password: "fail"}
 		assert_not_empty flash[:alert]
-		assert_redirect_to login_url
+		assert_redirected_to login_url
 	end
 
 	test "should login successfully" do
