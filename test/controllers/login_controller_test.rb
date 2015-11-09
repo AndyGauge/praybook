@@ -28,7 +28,8 @@ class LoginControllerTest < ActionController::TestCase
 
 	test "should assign guest to current_user" do
 		get :new
-		@controller = LoginController.new session: {}
+		@controller = LoginController.new
+		@controller.session = {} 
 		assert_true @controller.current_user && @controller.guest?
 	end
 
