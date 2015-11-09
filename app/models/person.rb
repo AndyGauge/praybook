@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
 	#attr_accessor :name
-	attr_reader  :email
+	#attr_reader  :email
 	before_save :capitalize_name
 
 	#TODO: add texting capibility
