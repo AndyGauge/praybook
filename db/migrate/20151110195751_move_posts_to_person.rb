@@ -1,5 +1,7 @@
 class MovePostsToPerson < ActiveRecord::Migration
   def change
-  	change_column :posts, :user_id, :person_id
+  	change_table :posts do |post|
+  		post.rename :user_id, :person_id
+  	end
   end
 end
