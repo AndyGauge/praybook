@@ -1,6 +1,8 @@
 class Person < ActiveRecord::Base
 	before_save :capitalize_name
 	has_many :posts
+	has_many :prayers
+	has_many :praises
 
 	#TODO: add texting capibility
 	private
