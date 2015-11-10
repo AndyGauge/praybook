@@ -26,11 +26,4 @@ class LoginControllerTest < ActionController::TestCase
 		assert_nil session[:current_user_id]
 	end
 
-	test "should assign guest to current_user" do
-		get :new
-		@controller = LoginController.new
-		@controller.session = {} 
-		assert_true @controller.current_user && @controller.guest?
-	end
-
 end
