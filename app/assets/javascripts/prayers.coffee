@@ -3,3 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $("div.binding").height($(window).height()-1)
+$(window).resize ->
+  $("div.binding").height($(window).height()-1)
