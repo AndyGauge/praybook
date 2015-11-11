@@ -2,4 +2,4 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $("div.binding").height($(window).height()-1)
+  $("div.binding").height($(window).height())
