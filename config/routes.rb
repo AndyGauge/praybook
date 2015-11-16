@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prayers, :only => [:index, :show]
   resources :praises, :only => [:index, :show]
 
-  root 'users#new'
+  root 'login#root'
   
   #Getting specific with the login methods
   get '/login', to: 'login#new'
