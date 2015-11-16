@@ -26,4 +26,9 @@ class LoginControllerTest < ActionController::TestCase
 		assert_nil session[:current_user_id]
 	end
 
+	test "should navigate to home page" do
+		get :root
+		assert_response :success
+	end
+	
 end
