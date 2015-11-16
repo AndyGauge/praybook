@@ -1,14 +1,14 @@
 <div class="container">
 	<nav class="row purple-nav">
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-5 col-md-4">
 			PRAYBOOK
 		</div>
-		<div class="hidden-xs hidden-sm col-md-4">&nbsp;</div>
+		<div class="hidden-xs hidden-sm col-md-3">&nbsp;</div>
 		<%= bootstrap_form_tag url: '/login', layout: :inline do |login_form| %>
 		<div class="col-sm-3 col-md-2">
 			<%= login_form.email_field :email, hide_label: true %>
 		</div>
-		<div class="col-sm-3 col-md-2">
+		<div class="col-sm-4 col-md-3">
 			<%= login_form.password_field :password , skip_label: true %><%= login_form.submit "Log in", class: "btn-success" %>
 		</div>
 		<% end %>
