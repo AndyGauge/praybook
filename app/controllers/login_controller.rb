@@ -18,6 +18,6 @@ class LoginController < ApplicationController
 	end
 
 	def root
-		@user = current_user
+		@user = User.new
 	end
 end
