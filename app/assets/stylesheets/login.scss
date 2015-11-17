@@ -3,9 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $light-purple: #80C;
+body
+{
+	font-size: 100%;
+}
 .purple-nav
 {
 	background-color: $light-purple;
 	color: #FFF;
 	font-family: fantasy;
+}
+h1.titles
+{
+	font-size: 2em;
+	text-transformation: uppercase;
+}
+.input-fields
+{
+	font-family: monospace;
+	font-size: 1.5em;
 }
