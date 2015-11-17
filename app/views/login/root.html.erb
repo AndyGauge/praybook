@@ -6,14 +6,17 @@
 		<div class="hidden-xs hidden-sm col-md-3">&nbsp;</div>
 		<%= bootstrap_form_tag url: '/login', layout: :inline do |login_form| %>
 		<div class="col-sm-3 col-md-2 input-fields">
-			<%= login_form.email_field :email, hide_label: true %>
+			<%= login_form.email_field :email, hide_label: true, help: "email address" %>
 		</div>
 		<div class="col-sm-3 col-md-2 input-fields">
-			<%= login_form.password_field :password , skip_label: true %>
+			<%= login_form.password_field :password , skip_label: true, help: "password" %>
 		</div>
 		<div class="col-sm-2 col-md-1">
-			<%= login_form.submit "LOG IN" %>
+			<%= login_form.submit "LOG IN", class: "btn-purple" %>
 		</div>
 		<% end %>
 	</nav>
+	<main>
+		<%= render 'users/form' %>
+	</main>
 </div>

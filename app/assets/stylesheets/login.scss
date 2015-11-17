@@ -2,25 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$light-purple: #80C;
+$top-purple: #70A;
+$nav-button-text: #408;
 body
 {
 	font-size: 100%;
 }
 .purple-nav
 {
-	background-color: $light-purple;
+	background-color: $top-purple;
 	color: #FFF;
 	font-family: fantasy;
-	line-height: 1.2;
+	padding: 10px;
 }
 .purple-title
 {
-	font-size: 2em;
+	font-size: 3em;
 	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 .input-fields
 {
 	font-family: monospace;
 	font-size: 1.5em;
+}
+.btn-purple
+{
+	color: $nav-button-text;
 }
