@@ -1,7 +1,7 @@
-<%= bootstrap_form_for(@user, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |user_form| %>
+<%= bootstrap_form_for(@user, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8") do |user_form| %>
 	<%= user_form.text_field :name %>
 	<%= user_form.email_field :email %>
 	<%= user_form.password_field :password %>
 	<%= user_form.password_field :password_confirmation %>
-	<%= user_form.submit "Sign Up", class: "btn btn-primary btn-lg" %>
+	<%= user_form.submit "Sign Up", class: "btn btn-primary btn-lg col-centers" %>
 <% end %>

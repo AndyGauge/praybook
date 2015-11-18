@@ -7,6 +7,7 @@ $nav-button-text: #408;
 body
 {
 	font-size: 100%;
+
 }
 .purple-nav
 {
@@ -38,8 +39,16 @@ body
 	background: #EEE;
 	padding: 20px;
 	width: auto;
+	font-size: 1.25em;
 }
 .afore-main
 {
 	min-height: 10px;
+	font-family: 'Freight Sans Bold', 'Helvetica Neue', 'Segoe UI', 'Malgun Gothic', Meiryo, 'Microsoft JhengHei', helvetica, arial, sans-serif;
+	//we're stealing facebook's decoration
+}
+.col-centers
+{
+  float: none;
+	margin: 0 auto;
 }
