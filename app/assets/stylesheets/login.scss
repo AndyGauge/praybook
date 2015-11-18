@@ -29,4 +29,13 @@ body
 .btn-purple
 {
 	color: $nav-button-text;
+	font-weight: bold;
+}
+.gray-boxy
+{
+	border-radius: 12px;
+	border: 1px $nav-button-text;
+	background: #EEE;
+	padding: 20px;
+	width: auto;
 }
