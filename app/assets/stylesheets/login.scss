@@ -1,3 +1,61 @@
 // Place all the styles related to the login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$top-purple: #70A;
+$nav-button-text: #408;
+body
+{
+	font-size: 100%;
+
+}
+.purple-nav
+{
+	background-color: $top-purple;
+	color: #FFF;
+	font-family: fantasy;
+	padding: 10px;
+}
+.purple-title
+{
+	font-size: 3em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.input-fields
+{
+	font-family: monospace;
+	font-size: 1.5em;
+}
+.btn-purple
+{
+	color: $nav-button-text;
+	font-weight: bold;
+}
+.gray-boxy
+{
+	border-radius: 12px;
+	border: 1px $nav-button-text;
+	background: #EEE;
+	padding: 20px;
+	width: auto;
+	font-size: 1.25em;
+}
+.afore-main
+{
+	min-height: 10px;
+	font-family: 'Freight Sans Bold', 'Helvetica Neue', 'Segoe UI', 'Malgun Gothic', Meiryo, 'Microsoft JhengHei', helvetica, arial, sans-serif;
+	//we're stealing facebook's decoration
+}
+.col-centers
+{
+  float: none;
+	margin: 0 auto;
+}
+.footer-links li, .footer-links a
+{
+	display: inline-block;
+	font-size: 1.2em;
+	color: $nav-button-text;
+	margin: .5em
+}
