@@ -54,7 +54,8 @@ body
 }
 .footer-links li, .footer-links a
 {
-	display: inline;
-	font-size: 1.5em;
+	display: inline-block;
+	font-size: 1.2em;
 	color: $nav-button-text;
+	margin: .5em
 }
