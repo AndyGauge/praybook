@@ -16,4 +16,8 @@ class LoginController < ApplicationController
 		slay_current_user
 		redirect_to root_url
 	end
+
+	def root
+		@user = User.new
+	end
 end
