@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoginControllerTest < ActionController::TestCase
+class LoginsControllerTest < ActionController::TestCase
 	test "should display login form" do
 		get :new
 		assert_response :success
