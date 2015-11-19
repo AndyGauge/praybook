@@ -25,15 +25,10 @@ class UsersController < ApplicationController
 		@user = User.find(param[:id])
 	end
 	def select_user_from_login
-		@user = current_user
+		@user = current_user.becomes(User)
 	end
-
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
-	end
-
-	def current_user
-		super().becomes(User)
 	end
 
 end
