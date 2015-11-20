@@ -20,10 +20,6 @@ class UsersController < ApplicationController
 
 	def edit
 	end
-
-	def select_user_from_id
-		@user = User.find(param[:id])
-	end
 	def select_user_from_login
 		@user = current_user.becomes(User)
 	end
