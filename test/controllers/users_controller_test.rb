@@ -7,7 +7,12 @@ class UsersControllerTest < ActionController::TestCase
 	end
 
 	test "can submit user blank" do
-		post :create, user: {}
+		post :create, user: { 
+			name: "", 
+			email: "", 
+			password: "", 
+			password_confirmation: ""
+		}
 		assert_redirected_to user_path
 	end
 
@@ -20,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
 				password_confirmation: "passw0RD" 
 			}
 		end
-		assert_redirect_to user_url
+		assert_redirected_to user_url
 	end
 		
 end
