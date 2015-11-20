@@ -29,7 +29,7 @@ class UsersControllerTest < ActionController::TestCase
 	end
 
 	test "should inflect User class on person" do
-		get :show, {}, {'current_user_id' => person(:guest).id}
+		get :show, {}, {'current_user_id' => people(:guest).id}
 		assert_response :success
 	end
 		
