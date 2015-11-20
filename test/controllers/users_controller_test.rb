@@ -32,5 +32,12 @@ class UsersControllerTest < ActionController::TestCase
 		get :show, {}, {'current_user_id' => people(:guest).id}
 		assert_response :success
 	end
+
+	test "should create Person when trying application" do
+		assert_difference('Person.count') do
+			get :edit
+		end
+		assert_response :success
+	end
 		
 end
