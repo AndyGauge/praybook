@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Login authenticates or displays
   resource :login, :only => [:new, :create]
   # Log out with safe post action
-  post '/logout', to: 'logins#destroy'
+  get '/logout', to: 'logins#destroy', as: :logout
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
