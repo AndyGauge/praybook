@@ -11,10 +11,7 @@ class ApplicationController < ActionController::Base
   def new_guest_user
   	Person.find(session[:current_user_id] = Person.create({}).id)
   end
-  def guest?
-  	# In single table inheritance it would appear that the type is nil for Person
-  	!!current_user.type
-  end
+
   def slay_current_user
   	@curent_user = session[:current_user_id] = nil
   end
