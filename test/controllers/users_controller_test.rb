@@ -27,5 +27,10 @@ class UsersControllerTest < ActionController::TestCase
 		end
 		assert_redirected_to user_url
 	end
+
+	test "should inflect User class on person" do
+		get :show, {}, {'current_user_id' => person(:guest).id}
+		assert_response :success
+	end
 		
 end
