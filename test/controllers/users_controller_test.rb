@@ -13,7 +13,7 @@ class UsersControllerTest < ActionController::TestCase
 			password: "", 
 			password_confirmation: ""
 		}
-		assert_redirected_to user_path
+		assert_response :success
 	end
 
 	test "should create new user" do
