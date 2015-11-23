@@ -1,4 +1,4 @@
-class LoginController < ApplicationController
+class LoginsController < ApplicationController
 	def new 
 		#@user = guest? ? User.new : current_user
 	end
@@ -15,5 +15,9 @@ class LoginController < ApplicationController
 	def destroy
 		slay_current_user
 		redirect_to root_url
+	end
+
+	def root
+		@user = User.new
 	end
 end

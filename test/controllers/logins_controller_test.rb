@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoginControllerTest < ActionController::TestCase
+class LoginsControllerTest < ActionController::TestCase
 	test "should display login form" do
 		get :new
 		assert_response :success
@@ -26,4 +26,9 @@ class LoginControllerTest < ActionController::TestCase
 		assert_nil session[:current_user_id]
 	end
 
+	test "should navigate to home page" do
+		get :root
+		assert_response :success
+	end
+	
 end

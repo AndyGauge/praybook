@@ -1,0 +1,12 @@
+<nav class="row purple-nav">
+	<%= nav_bar fixed: :top, brand: "PRAYBOOK", responsive: true do %>
+		<%= menu_group do %>
+			<%= menu_item "Prayers", prayers_path  %>
+			<%= menu_item "Praises", praises_path  %>
+			<%= menu_item "Profile", user_path     %>
+			<%= menu_group pull: :right do         %>
+				<%= menu_item "Log Out", logout_path %>
+			<% end %>
+		<% end %>
+	<% end %>
+</nav>
