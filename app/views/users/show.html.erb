@@ -1,0 +1,12 @@
+<% content_for :page_subtitle do %>
+	My Account
+<% end %>
+<div class="container">
+	<%= render 'shared/nav/top_in' %>
+	<div class="row afore-main">
+		<h1>Current User: <%= @user.name %></h1>
+	</div>
+	<div class="gray-boxy">
+		<%= @user.name %> has no friends.  Jesus had friends; you should too.
+	</div>
+</div>

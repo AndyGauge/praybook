@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
   
-  resources :users, :only => [:create, :new, :edit]
-  
+  # Main page allows sign in, sign up, and try
+  root 'logins#root'
+  # User has prayers and praises.  Must log on to edit
+  resource :user, :only => [:create, :new, :edit, :show, :update]
   resources :prayers, :only => [:index, :show]
   resources :praises, :only => [:index, :show]
-
-  root 'login#root'
-  
-  #Getting specific with the login methods
-  get '/login', to: 'login#new'
-  post '/login', to: 'login#create'
-  post '/logout', to: 'login#destroy'
+  # Login authenticates or displays
+  resource :login, :only => [:new, :create]
+  # Log out with safe post action
+  get '/logout', to: 'logins#destroy', as: :logout
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

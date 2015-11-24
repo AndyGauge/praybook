@@ -1,4 +1,4 @@
-class LoginController < ApplicationController
+class LoginsController < ApplicationController
 	def new 
 		#@user = guest? ? User.new : current_user
 	end
@@ -18,6 +18,6 @@ class LoginController < ApplicationController
 	end
 
 	def root
-		@user = current_user
+		@user = User.new
 	end
 end
