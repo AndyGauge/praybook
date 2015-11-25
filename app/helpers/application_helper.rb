@@ -3,6 +3,6 @@ module ApplicationHelper
     path ||= send("#{controller_name.downcase}_path") 
     "<li class=\"nav-item #{' active' if current_page?(path)}\">
        <a class=\"nav-link pb-navbar-link\"href=\"#{path}\">#{display}</a>
-     </li>"
+     </li>".html_safe
   end
 end
