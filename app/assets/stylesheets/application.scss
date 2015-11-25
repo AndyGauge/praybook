@@ -11,6 +11,30 @@
  * file per style scope.
  *
  *= require_tree .
- *= require rails_bootstrap_forms
  *= require_self
  */
+@import "bootstrap";
+
+.navbar-brand {
+	font-size: 3em;
+	color: #FFF;
+	letter-spacing: 1px;
+	text-shadow: 2px 4px #408;
+}
+.navbar-nav {
+	font-size: 2em;
+}
+.navbar-nav li a {
+	color: #EFE;
+}
+.navbar-nav li.active a {
+	background-color: #EFE;
+	color: #408;
+	text-shadow: 1px 1px #CCF;
+}
+.navbar {
+	background-color: #70A;
+}
+body {
+	top-padding: 60px;
+}
