@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resource :user, :only => [:create, :new, :edit, :show, :update]
   resources :prayers, :only => [:index, :show]
   resources :praises, :only => [:index, :show]
-  # Login authenticates or displays
-  resource :login, :only => [:new, :create]
+  # Login authenticates or displays, hacking in /login as the edit path by calling it show
+  resource :login, :only => [:new, :create, :show]
   # Log out with safe post action
   get '/logout', to: 'logins#destroy', as: :logout
   
