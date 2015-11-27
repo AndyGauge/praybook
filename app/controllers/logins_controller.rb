@@ -1,7 +1,10 @@
 class LoginsController < ApplicationController
+	
+	before_action :select_user_from_login, only: [:new, :root]
+
 	def new 
-		#@user = guest? ? User.new : current_user
 	end
+
 	def create
 		@user = User.find_by_email(params[:email])
 		if @user && @user.authenticate(params[:password])
@@ -18,6 +21,8 @@ class LoginsController < ApplicationController
 	end
 
 	def root
-		@user = User.new
+	end
+	def select_user_from_login
+		@user = current_user.becomes(User)
 	end
 end

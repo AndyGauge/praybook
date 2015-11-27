@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark">
 	<a class="navbar-brand pb-navbar-brand" href='/'>PRAYBOOK</a>
 	<ul class="nav navbar-nav">
-		<% if current_user.guest? %>   <%# If new user display login information %>
+		<% if @user.guest? %>   <%# If new user display login information %>
 			<%= bootstrap_form_tag url: '/login', layout: :inline do |login_form| %>
 				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
