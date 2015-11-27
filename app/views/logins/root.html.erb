@@ -6,7 +6,8 @@
 	<h6>Better than free</h6>
 </div>
 <div class="gray-boxy">
-	<%= render 'users/form' %>
+	
+	<%= render 'users/form' if @user.guest? %>
 </div>
 <div class="row afore-main">
 		<h1>Not ready?</h1>
