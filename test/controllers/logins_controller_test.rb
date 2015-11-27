@@ -5,7 +5,7 @@ class LoginsControllerTest < ActionController::TestCase
 		get :new
 		assert_response :success
 		get :show
-		assert_respones :success
+		assert_response :success
 	end
 
 	test "should fail login with bad attempt" do
