@@ -3,6 +3,7 @@ class PrayersController < ApplicationController
 
 	def index
 		@prayers = @user.prayers
+		@proto_prayer = Prayer.new({person_id: @user.id})
 	end
 	def show
 		@prayer = Prayer.find(params[:id])
