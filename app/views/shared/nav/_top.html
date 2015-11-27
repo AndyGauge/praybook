@@ -1,19 +1,20 @@
 <nav class="navbar navbar-dark">
 	<a class="navbar-brand pb-navbar-brand" href='/'>PRAYBOOK</a>
-	<ul class="nav navbar-nav">
+
 		<% if @user.guest? %>   <%# If new user display login information %>
+			<div class=""
 			<%= bootstrap_form_tag url: '/login', layout: :inline, html: {class: "pull-right"} do |login_form| %>
 				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
-				<span class="input-group-btn pb-inline-form">	
-					<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
-				</span>
+				<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
 			<% end %>    <%# End login_form do block    %>
 		<% else %>     <%# If logged on display links %>	
+			<ul class="nav navbar-nav">
 			<%= pb_menu_item "prayers" %>
 			<%= pb_menu_item "praises" %>
 			<%= pb_menu_item "users", path: user_path, display: "Profile" %>
 			<%= pb_menu_item "login", path: logout_path, display:"Log Out" %>
+			</ul>
 		<% end %> 
-	</ul>
+	
 </nav>
