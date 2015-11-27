@@ -3,11 +3,12 @@
 	<ul class="nav navbar-nav">
 		<% if current_user.guest? %>   <%# If new user display login information %>
 			<%= bootstrap_form_tag url: '/login', layout: :inline do |login_form| %>
-			<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
-			<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
+				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
+				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
 				<span class="input-group-btn">	
 					<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
 				</span>
+			<% end %>    <%# End login_form do block    %>
 		<% else %>     <%# If logged on display links %>	
 			<%= pb_menu_item "prayers" %>
 			<%= pb_menu_item "praises" %>
