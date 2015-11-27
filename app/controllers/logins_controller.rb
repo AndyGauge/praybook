@@ -13,7 +13,7 @@ class LoginsController < ApplicationController
 		@user = User.find_by_email(params[:email])
 		if @user && @user.authenticate(params[:password])
 			session[:current_user_id] = @user.id
-			#render the logged on page
+			redirect_to prayers_path
 			
 		else
 			redirect_to login_path, alert: "Failed to logon"
