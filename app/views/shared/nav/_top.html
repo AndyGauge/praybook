@@ -2,10 +2,10 @@
 	<a class="navbar-brand pb-navbar-brand" href='/'>PRAYBOOK</a>
 	<ul class="nav navbar-nav">
 		<% if @user.guest? %>   <%# If new user display login information %>
-			<%= bootstrap_form_tag url: '/login', layout: :inline do |login_form| %>
+			<%= bootstrap_form_tag url: '/login', layout: "firn-inline pull-right" do |login_form| %>
 				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
-				<span class="input-group-btn">	
+				<span class="input-group-btn pb-inline-form">	
 					<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
 				</span>
 			<% end %>    <%# End login_form do block    %>
