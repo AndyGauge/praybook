@@ -4,6 +4,8 @@ class LoginsControllerTest < ActionController::TestCase
 	test "should display login form" do
 		get :new
 		assert_response :success
+		get :show
+		assert_respones :success
 	end
 
 	test "should fail login with bad attempt" do
