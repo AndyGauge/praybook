@@ -1,12 +1,12 @@
 class LoginsController < ApplicationController
 	
-	before_action :select_user_from_login, only: [:new, :root]
+	before_action :select_user_from_login, only: [:new, :root, :show]
 
 	def new 
 	end
 
 	def show
-		self.new
+		render "new"
 	end
 
 	def create
@@ -16,7 +16,7 @@ class LoginsController < ApplicationController
 			#render the logged on page
 			
 		else
-			redirect_to login_url, alert: "Failed to logon"
+			redirect_to login_path, alert: "Failed to logon"
 		end
 	end
 	def destroy
