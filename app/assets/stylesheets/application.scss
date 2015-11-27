@@ -1,38 +1,13 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 @import "*";
 @import "bootstrap";
 
-.pb-navbar-brand {
-	font-size: 3em;
-	color: #FFF;
-	letter-spacing: 1px;
-	text-shadow: 2px 4px #408;
-}
-.pb-navbar-link {
-	font-size: 2em;
-	color: #EFE;
-}
-.pb-navbar li.active a {
-	background-color: #EFE;
-	color: #408;
-	text-shadow: 1px 1px #CCF;
-}
 .navbar {
 	background-color: #70A;
+	border-radius: 0.35rem;
+}
+.nav-item.active {
+	font-weight: bold;
+	text-shadow: 2px 2px #408;
 }
 body {
 	top-padding: 60px;
