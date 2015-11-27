@@ -1,0 +1,15 @@
+.pb-navbar-brand {
+	font-size: 3em;
+	color: #FFF;
+	letter-spacing: 1px;
+	text-shadow: 2px 4px #408;
+}
+.pb-navbar-link {
+	font-size: 2em;
+	color: #EFE;
+}
+.pb-navbar li.active a {
+	background-color: #EFE;
+	color: #408;
+	text-shadow: 1px 1px #CCF;
+}
