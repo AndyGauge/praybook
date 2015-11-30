@@ -10,7 +10,11 @@ class PrayersController < ApplicationController
 	end
 	def create
 		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
-		redirect_to prayers_path
+		if @praye.save
+			redirect_to prayers_path
+		else
+			render 'show'
+		end
 	end
 	
 	private
