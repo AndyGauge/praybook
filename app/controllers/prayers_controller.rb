@@ -2,7 +2,7 @@ class PrayersController < ApplicationController
 	before_action :assign_current_user
 
 	def index
-		@prayers = @user.prayers
+		@prayers = @user.prayers.order(created_at: :desc)
 		@proto_prayer = Prayer.new({person_id: @user.id})
 	end
 	def show
@@ -10,7 +10,7 @@ class PrayersController < ApplicationController
 	end
 	def create
 		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
-		if @praye.save
+		if @prayer.save
 			redirect_to prayers_path
 		else
 			render 'show'
