@@ -15,7 +15,7 @@ class PrayersControllerTest < ActionController::TestCase
 	end
 
 	test "should reject blank titles" do
-		post :create, prayer: {title: "", body: "not blank"}
+		post :create, prayer: {body: "not blank"}
 		assert_not_nil flash[:alert]
 	end
 
