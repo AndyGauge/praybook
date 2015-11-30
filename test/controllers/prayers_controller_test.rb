@@ -15,8 +15,8 @@ class PrayersControllerTest < ActionController::TestCase
 	end
 
 	test "Prayer visible outside user context through show" do
-		get(:show, {id: posts(:one).id})
+		get(:show, {id: posts(:prayer).id})
 		assert_response :success
 	end
-	
+
 end
