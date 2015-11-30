@@ -1,7 +1,22 @@
 require 'test_helper'
 
 class PrayersControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+	test "should display new prayers and no prayers for guest" do
+		get :index
+		assert_response :success
+	end
+
+	test "should allow new posts for guests" do
+		get :index
+		assert_difference('Post.count') do
+			post :create, prayer: {title: "test", body: "test"}
+		end
+		assert_redirected_to prayers_path
+	end
+
+	test "Prayer visible outside user context through show" do
+		get(:show, {id: posts(:one).id})
+		assert_response :success
+	end
+	
 end
