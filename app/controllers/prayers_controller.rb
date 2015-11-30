@@ -3,7 +3,7 @@ class PrayersController < ApplicationController
 
 	def index
 		@prayers = @user.prayers.order(created_at: :desc)
-		@proto_prayer = Prayer.new({person_id: @user.id})
+		@prayer = Prayer.new({person_id: @user.id})
 	end
 	def show
 		@prayer = Prayer.find(params[:id])
@@ -13,8 +13,13 @@ class PrayersController < ApplicationController
 		if @prayer.save
 			redirect_to prayers_path
 		else
-			render 'show'
+			flash[:alert] = @prayer.errors
+			render 'edit'
 		end
+	end
+	def edit
+		@prayer = @user.prayers.find_by_id(params[:id]) ||
+		 Prayer.new({person_id: @user.id})
 	end
 	
 	private
