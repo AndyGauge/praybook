@@ -1,21 +1,18 @@
 <% content_for :page_subtitle do %>
 	Join Praybook | Login
 <% end %>
-<div class="container">
-	<%= render 'shared/nav/top_out' %>
-	<div class="row afore-main">
-		<h1>Sign Up</h1>
-		<h6>Better than free</h6>
+<div class="row afore-main">
+	<h1>Sign Up</h1>
+	<h6>Better than free</h6>
+</div>
+<div class="gray-boxy">
+	
+	<%= render 'users/form' if @user.guest? %>
+</div>
+<div class="row afore-main">
+		<h1>Not ready?</h1>
+		<h6>No commitment required -- try it first</h6>
+	<div class="col-md-6 col-xl-4 col-centers">
+			<a class="btn btn-success btn-lg btn-block" href="#">Try for free</a>
 	</div>
-	<div class="gray-boxy">
-		<%= render 'users/form' %>
-	</div>
-	<div class="row afore-main">
-			<h1>Not ready?</h1>
-			<h6>No commitment required -- try it first</h6>
-		<div class="col-md-6 col-xl-4 col-centers">
-				<a class="btn btn-success btn-lg btn-block" href="#">Try for free</a>
-		</div>
-	</div>
-	<%= render 'shared/nav/bottom' %>
 </div>

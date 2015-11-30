@@ -1,13 +1,10 @@
-<div class="row">
-	<div class="col-xs-11 col-sm-10 col-md-9 col-lg-8">
-		<%= render 'new' %>
-		<%# TODO: display existing prayers %>
-	</div>
-	<div class="col-xs-1">
-		<%# TODO: display gradient in HTML5 %>
-	</div>
-	<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3">
-		<%# TODO: display Praise partial %>
-	</div>
+<% content_for :page_subtitle do %>
+	Prayers
+<% end %>
+<%= render 'new' %>
+<% @prayers.each do |prayer| %>
+	<div class="pb-prayer-wrap">
+	<h3><%= prayer.title %></h3>
+	<p><%= prayer.body %></p>
 </div>
-
+<% end %>

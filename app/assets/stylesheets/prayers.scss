@@ -1,3 +1,36 @@
 // Place all the styles related to the Prayers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.binding {
+  background: -webkit-linear-gradient(90deg, #FFF, #888, #FFF); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(90deg, #FFF, #888, #FFF);; /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(90deg, #FFF, #888, #FFF); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(90deg, #FFF, #888, #FFF); /* Standard syntax (must be last) */
+  min-height: 100%;
+}
+.top_padding {
+	margin-top: 80px;
+}
+.left_most {
+	margin-left: 80px;
+}
+.right_most {
+	margin-right: 80px;
+}
+h1.titles {
+	font-weight: bold;
+	color: #406;
+	font-size: 56px;
+	font-family: cursive;
+}
+a {
+	text-decoration: none;
+}
+h1.righted {
+	text-align: right;
+}
+.bordered {
+	border-bottom-style: dotted;
+	border-color: #60A;
+}
+

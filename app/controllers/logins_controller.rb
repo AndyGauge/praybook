@@ -1,15 +1,22 @@
 class LoginsController < ApplicationController
+	
+	before_action :select_user_from_login, only: [:new, :root, :show]
+
 	def new 
-		#@user = guest? ? User.new : current_user
 	end
+
+	def show
+		render "new"
+	end
+
 	def create
 		@user = User.find_by_email(params[:email])
 		if @user && @user.authenticate(params[:password])
 			session[:current_user_id] = @user.id
-			#render the logged on page
+			redirect_to prayers_path
 			
 		else
-			redirect_to login_url, alert: "Failed to logon"
+			redirect_to login_path, alert: "Failed to logon"
 		end
 	end
 	def destroy
@@ -18,6 +25,8 @@ class LoginsController < ApplicationController
 	end
 
 	def root
-		@user = User.new
+	end
+	def select_user_from_login
+		@user = current_user.becomes(User)
 	end
 end

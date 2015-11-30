@@ -1,19 +1,27 @@
 class PrayersController < ApplicationController
 	before_action :assign_current_user
-	before_action :select_prayer_from_id, only: [:show]
+
 	def index
-		@prayers = @user.prayers
+		@prayers = @user.prayers.order(created_at: :desc)
+		@proto_prayer = Prayer.new({person_id: @user.id})
 	end
-
 	def show
-	end
-
-	private
-	def select_prayer_from_id
 		@prayer = Prayer.find(params[:id])
 	end
-	def assign_current_user
-		@user = current_user
+	def create
+		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
+		if @prayer.save
+			redirect_to prayers_path
+		else
+			render 'show'
+		end
 	end
-
+	
+	private
+	def assign_current_user
+		@user = current_user.becomes(User)
+	end
+	def prayer_param
+		params.require(:prayer).permit(:body, :title)
+	end
 end

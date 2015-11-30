@@ -3,6 +3,7 @@ require 'test_helper'
 class PersonTest < ActiveSupport::TestCase
 	test "guest is valid person" do 
 		assert people(:guest).valid?
+		assert people(:guest).guest?
 	end
 	test "person with name capitalizes" do
 		p = people(:person_with_name)
