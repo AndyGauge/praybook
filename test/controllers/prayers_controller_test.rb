@@ -14,7 +14,15 @@ class PrayersControllerTest < ActionController::TestCase
 		assert_redirected_to prayers_path
 	end
 
-	test "Prayer visible outside user context through show" do
+	test "should reject blank titles" do
+		post :create, prayer: {title: "", body: "not blank"}
+		assert_not_nil flash[:alert]
+	end
+
+	test "navigate to edit Prayer" do
+		get(:show, {id: posts(:prayer).id}, {user_id: posts(:prayer).person_id})
+
+	test "should find Prayer outside user context through show" do
 		get(:show, {id: posts(:prayer).id})
 		assert_response :success
 	end
