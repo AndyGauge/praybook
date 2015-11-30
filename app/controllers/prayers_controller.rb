@@ -9,7 +9,7 @@ class PrayersController < ApplicationController
 		@prayer = Prayer.find(params[:id])
 	end
 	def create
-		@prayer = Prayer.new(prayer_param.merge {person_id: @user.id})
+		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
 		redirect_to prayers_path
 	end
 	
