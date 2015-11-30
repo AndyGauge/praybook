@@ -20,7 +20,7 @@ class PrayersControllerTest < ActionController::TestCase
 	end
 
 	test "navigate to edit Prayer" do
-		get(:show, {id: posts(:prayer).id}, {user_id: posts(:prayer).person_id})
+		get(:edit, {id: posts(:prayer).id}, {user_id: posts(:prayer).person_id})
 	end
 
 	test "should find Prayer outside user context through show" do
