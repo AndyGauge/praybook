@@ -23,7 +23,7 @@ class PrayersController < ApplicationController
 	end
 	def update
 		@prayer = @user.prayers.find_by_id(params[:id])
-		@prayer.update!(prayer_param)
+		@prayer.update!(prayer_param) if @prayer.present?
 		redirect_to index
 	end
 	

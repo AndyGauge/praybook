@@ -25,7 +25,8 @@ class PrayersControllerTest < ActionController::TestCase
 
 	test "should update existing prayer" do
 		patch(:update, 
-			{id: posts(:prayer).id, prayer: {title: "new", body: "new body"}}, 
+			id: posts(:prayer).id, 
+			prayer: {title: "new", body: "new body"}, 
 			user_id: posts(:prayer).person_id
 		)
 		assert_response :success
