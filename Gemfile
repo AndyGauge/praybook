@@ -21,7 +21,7 @@ source 'https://rails-assets.org' do
 end
 gem 'bootstrap', '~> 4.0.0.alpha1'
 #
-gem 'bootstrap4-form-builder'
+gem 'bootstrap_form', '~> 2.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

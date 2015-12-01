@@ -1,8 +1,8 @@
 <%= bootstrap_form_for(@user, url: user_path, layout: :horizontal, label_col: "col-md-3", control_col: "col-md-8") do |user_form| %>
-	<%= user_form.text_field :name %>
-	<%= user_form.email_field :email %>
-	<%= user_form.password_field :password %>
-	<%= user_form.password_field :password_confirmation %>
+	<%= user_form.text_field :name, :html => {:class => "row"} %>
+	<%= user_form.email_field :email, :html => {:class => "row"} %>
+	<%= user_form.password_field :password, :html => {:class => "row"} %>
+	<%= user_form.password_field :password_confirmation,:html => {:class => "row"} %>
 	<%= user_form.form_group do %>
 		<%= user_form.submit "Sign Up", class: "btn btn-primary btn-lg" %>
 	<% end %>
