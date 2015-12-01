@@ -29,7 +29,7 @@ class PrayersControllerTest < ActionController::TestCase
 			prayer: {title: "new", body: "new body"}, 
 			user_id: posts(:prayer).person_id
 		)
-		assert_response :success
+		assert_redirected_to prayers_path
 	end
 
 
