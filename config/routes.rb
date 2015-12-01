@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   # Main page allows sign in, sign up, and try
   root 'logins#root'
   # User has prayers and praises.  Must log on to edit
-  posts_actions = [:index, :show, :create, :edit, :update]
-  resource :user, :only => [:create, :new, :edit, :show, :update]
-  resources :prayers, :only => posts_actions
-  resources :praises, :only => posts_actions
+    resource :user, :only => [:create, :new, :edit, :show, :update]
+  resources :prayers, except: :destroy do 
+    patch 'complete', on: :member
+  end
+  resources :praises, except: :destroy
   # Login authenticates or displays, hacking in /login as the edit path by calling it show
   resource :login, :only => [:new, :create, :show]
   # Log out with safe post action
