@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # User has prayers and praises.  Must log on to edit
     resource :user, :only => [:create, :new, :edit, :show, :update]
   resources :prayers, except: :destroy do 
-    patch 'complete', on: :member
+    post 'complete', on: :member
   end
   resources :praises, except: :destroy
   # Login authenticates or displays, hacking in /login as the edit path by calling it show
