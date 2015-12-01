@@ -39,9 +39,9 @@ class PrayersControllerTest < ActionController::TestCase
 
 	test "should remove prayer when complete" do
 		assert_difference('Prayer.count') do
-			patch(:complete,
+			patch(:complete, 
 				id: posts(:prayer).id,
-				nil,
+				prayer: {},
 				user_id: posts(:prayer).person_id
 				)
 		end
