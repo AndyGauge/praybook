@@ -23,6 +23,16 @@ class PrayersControllerTest < ActionController::TestCase
 		get(:edit, {id: posts(:prayer).id}, {user_id: posts(:prayer).person_id})
 	end
 
+	test "should update existing prayer" do
+		patch(:update, 
+			id: posts(:prayer).id, 
+			prayer: {title: "new", body: "new body"}, 
+			user_id: posts(:prayer).person_id
+		)
+		assert_redirected_to prayers_path
+	end
+
+
 	test "should find Prayer outside user context through show" do
 		get(:show, {id: posts(:prayer).id})
 		assert_response :success

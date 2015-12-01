@@ -5,14 +5,16 @@
 	<h1>Sign Up</h1>
 	<h6>Better than free</h6>
 </div>
-<div class="gray-boxy">
+<div class="gray-boxy row">
 	
 	<%= render 'users/form' if @user.guest? %>
 </div>
 <div class="row afore-main">
-		<h1>Not ready?</h1>
-		<h6>No commitment required -- try it first</h6>
-	<div class="col-md-6 col-xl-4 col-centers">
-			<a class="btn btn-success btn-lg btn-block" href="#">Try for free</a>
+	<h1>Not ready?</h1>
+	<h6>No commitment required -- try it first</h6>
+	<div class="col-md-3 col-xl-4">&nbsp;</div>
+	<div class="col-md-6 col-xl-4">
+		<a class="btn btn-success btn-lg btn-block" href="<%= prayers_path %>">Try for free</a>
 	</div>
+	<div class="col-md-3 col-xl-4">&nbsp;</div>
 </div>
