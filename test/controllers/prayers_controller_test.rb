@@ -28,14 +28,24 @@ class PrayersControllerTest < ActionController::TestCase
 			id: posts(:prayer).id, 
 			prayer: {title: "new", body: "new body"}, 
 			user_id: posts(:prayer).person_id
-		)
+			)
 		assert_redirected_to prayers_path
 	end
-
 
 	test "should find Prayer outside user context through show" do
 		get(:show, {id: posts(:prayer).id})
 		assert_response :success
+	end
+
+	test "should remove prayer when complete" do
+		assert_difference('Prayer.count') do
+			patch(:complete,
+				id: posts(:prayer).id,
+				nil,
+				user_id: posts(:prayer).person_id
+				)
+		end
+		assert_redirected_to prayers_path
 	end
 
 end
