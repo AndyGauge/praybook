@@ -4,7 +4,7 @@
 <%= render 'new' %>
 <% @prayers.each do |prayer| %>
 	<div class="pb-prayer-wrap">
-	<h3><%= prayer.title %></h3>
+	<h3><a href="<%= prayer_edit_path(prayer) %>"><%= prayer.title %></a></h3>
 	<p><%= prayer.body %></p>
 </div>
 <% end %>
