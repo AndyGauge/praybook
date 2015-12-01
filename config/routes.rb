@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Main page allows sign in, sign up, and try
   root 'logins#root'
   # User has prayers and praises.  Must log on to edit
-  posts_actions = [:index, :show, :create, :edit]
+  posts_actions = [:index, :show, :create, :edit, :update]
   resource :user, :only => [:create, :new, :edit, :show, :update]
   resources :prayers, :only => posts_actions
   resources :praises, :only => posts_actions

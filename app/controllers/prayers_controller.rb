@@ -21,6 +21,11 @@ class PrayersController < ApplicationController
 		@prayer = @user.prayers.find_by_id(params[:id]) ||
 		 Prayer.new({person_id: @user.id})
 	end
+	def update
+		@prayer = @user.prayers.find_by_id(params[:id])
+		@prayer.update!(prayer_param)
+		redirect_to index
+	end
 	
 	private
 	def assign_current_user
