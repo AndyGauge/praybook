@@ -27,7 +27,7 @@ class PrayersController < ApplicationController
 	end
 	def complete
 		@prayer = find_user_prayer
-		@prayer.becomes(Praise).update!(type: "Praise") if @prayer.present?
+		@prayer.complete! if @prayer.present?
 		redirect_to index
 	end
 	
