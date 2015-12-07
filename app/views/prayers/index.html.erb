@@ -6,7 +6,7 @@
 	
 		<%= button_to "\u2714", complete_prayer_path(prayer), method: :post %>  
 	<%= link_to edit_prayer_path(prayer) do %>
-		<%= icon pencil %>
+		<%= icon :pencil %>
 	<% end %>
 
 	<%= panel prayer.body, heading: prayer.title %>
