@@ -25,10 +25,10 @@ class PrayersControllerTest < ActionController::TestCase
 
 	test "should update existing prayer" do
 		patch(:update, 
-			id: posts(:prayer).id, 
-			prayer: {title: "new", body: "new body"}, 
-			user_id: posts(:prayer).person_id
-			)
+					id: posts(:prayer).id, 
+					prayer: {title: "new", body: "new body"}, 
+					user_id: posts(:prayer).person_id
+				 )
 		assert_redirected_to prayers_path
 	end
 
@@ -38,13 +38,11 @@ class PrayersControllerTest < ActionController::TestCase
 	end
 
 	test "should remove prayer when complete" do
-		assert_difference('Prayer.count', -1) do
-			post(:complete, 
-				id: posts(:prayer).id,
-				prayer: {},
-				user_id: posts(:prayer).person_id
+		post(:complete, 
+				 id: posts(:prayer).id,
+				 prayer: {},
+				 user_id: posts(:prayer).person_id
 				)
-		end
 		assert_redirected_to prayers_path
 	end
 
