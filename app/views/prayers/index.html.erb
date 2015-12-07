@@ -6,7 +6,9 @@
 	
 	<%= 
 		panel prayer.body, heading: prayer.title
-		button_to "\u2714", complete_prayer_path(prayer)  
+		modal title: "Answered" do
+			button_to "\u2714", complete_prayer_path(prayer)  %> God has answered this prayer <%=
+		end
 		link_to "edit", edit_prayer_path(prayer) 
 	%>
 
