@@ -1,5 +1,5 @@
 <%= render 'shared/flash' %>
-<%= form_tag url: '/login' do |login_form| %>
+<%= form_for Login.new , url: '/login' do |login_form| %>
 	<%= login_form.email_field :email %>
 	<%= login_form.password_field :password %>
 	<%= login_form.submit "Log in" %>

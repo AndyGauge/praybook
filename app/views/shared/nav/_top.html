@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark">
 	<a class="navbar-brand pb-navbar-brand" href='/'>PRAYBOOK</a>
 		<% if @user.guest? %>   <%# If new user display login information %>
-			<%= form_tag url: '/login', layout: :inline, html: {class: "pull-right"} do |login_form| %>
+			<%= form_for Login.new, {url: '/login', layout: :inline, html: {class: "pull-right"}} do |login_form| %>
 				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
 				<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
