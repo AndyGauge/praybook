@@ -20,6 +20,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 gem 'bootstrap', '~> 4.0.0.alpha1'
+gem 'bh'
 #
 gem 'bootstrap_form', '~> 2.3.0'
 # Use jquery as the JavaScript library
