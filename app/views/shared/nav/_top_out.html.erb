@@ -3,7 +3,7 @@
 			PRAYBOOK
 		</div>
 		<div class="hidden-xs hidden-sm col-md-2">&nbsp;</div>
-		<%= form_for Login.new {url: '/login', layout: :inline} do |login_form| %>
+		<%= form_for :login, {url: '/login', layout: :inline} do |login_form| %>
 		<div class="col-sm-3 col-md-2 input-fields">
 			<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 		</div>
