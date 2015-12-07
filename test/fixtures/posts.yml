@@ -6,6 +6,12 @@ prayer:
   type: Prayer
   person: person_with_name
 
+second_prayer:
+  title: MyString_too
+  body: MyText_too
+  type: Prayer
+  person: person_with_name
+
 praise:
   title: MyString
   body: MyText

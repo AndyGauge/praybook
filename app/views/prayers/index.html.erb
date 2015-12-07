@@ -3,6 +3,7 @@
 <% end %>
 <%= render 'new' %>
 <% @prayers.each do |prayer| %>
+	<%= button_to "\u2714", complete_prayer_path(prayer) %>
 	<div class="pb-prayer-wrap">
 	<h3><a href="<%= edit_prayer_path(prayer) %>"><%= prayer.title %></a></h3>
 	<p><%= prayer.body %></p>

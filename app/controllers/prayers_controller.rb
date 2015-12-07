@@ -18,18 +18,25 @@ class PrayersController < ApplicationController
 		end
 	end
 	def edit
-		@prayer = @user.prayers.find_by_id(params[:id]) ||
-		 Prayer.new({person_id: @user.id})
+		@prayer = find_user_prayer || Prayer.new({person_id: @user.id})
 	end
 	def update
-		@prayer = @user.prayers.find_by_id(params[:id])
+		@prayer = find_user_prayer
 		@prayer.update!(prayer_param) if @prayer.present?
+		redirect_to index
+	end
+	def complete
+		@prayer = find_user_prayer
+		@prayer.complete! if @prayer.present?
 		redirect_to index
 	end
 	
 	private
 	def assign_current_user
 		@user = current_user.becomes(User)
+	end
+	def find_user_prayer
+		@user.prayers.find_by_id(params[:id])
 	end
 	def prayer_param
 		params.require(:prayer).permit(:body, :title)
