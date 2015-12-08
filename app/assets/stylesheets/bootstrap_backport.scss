@@ -82,8 +82,8 @@
   cursor: default;
   background-color: #0275d8;
 }
-.nav-link:hover {
-	background-color: default;
+.nav>li>a:hover {
+	background-color: #70A;
 }
 a .nav-link .pb-navbar-link:hover {
 	background-color: #70A;
