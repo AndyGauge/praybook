@@ -85,4 +85,7 @@
 .nav>li>a:hover {
 	background-color: default;
 }
-
+.nav>li.nav-item>a.pb-navbar-link:hover {
+  text-decoration:none;
+  background-color: #70A;
+}
