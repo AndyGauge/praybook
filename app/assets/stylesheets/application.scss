@@ -1,0 +1,14 @@
+@import "*";
+
+.navbar {
+	background-color: #70A;
+	border-radius: 0.35rem;
+}
+.nav-item.active {
+	font-weight: bold;
+	text-shadow: 2px 2px #408;
+}
+body {
+	top-padding: 60px;
+	bottom-padding: 60px;
+}

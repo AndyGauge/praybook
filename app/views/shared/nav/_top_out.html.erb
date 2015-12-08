@@ -1,0 +1,19 @@
+	<nav class="row purple-nav">
+		<div class="col-sm-4 col-md-4 purple-title navbar-brand">
+			PRAYBOOK
+		</div>
+		<div class="hidden-xs hidden-sm col-md-2">&nbsp;</div>
+		<%= form_for :login, {url: '/login', layout: :inline} do |login_form| %>
+		<div class="col-sm-3 col-md-2 input-fields">
+			<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
+		</div>
+		<div class="col-sm-5 col-md-4 input-fields">
+			<div class="input-group">
+				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
+				<span class="input-group-btn">	
+					<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
+				</span>
+			</div>
+		</div>
+		<% end %>
+	</nav>

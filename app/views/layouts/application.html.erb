@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Railstest</title>
+  <title>Praybook | <%= yield :page_subtitle %></title>
+  <%# load bootstrap and then application for override %>
+  <%= stylesheet_link_tag bootstrap_css %>
+  <%= stylesheet_link_tag font_awesome_css %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag bootstrap_js %>  
   <%= csrf_meta_tags %>
+
 </head>
 <body>
+<div class="container">
+	<%= render 'shared/nav/top' %>
 
-<%= yield %>
+	<%= yield %>
 
+<div class="row" style="height: 70px;">
+	<div class="col-sm-12">&nbsp;</div>
+</div>
+</div>
+<%= render 'shared/nav/bottom' %>
 </body>
 </html>

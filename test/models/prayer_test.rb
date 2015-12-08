@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class PrayerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test "should respond to complete!" do
+		@p = posts(:second_prayer)
+		@p.complete!
+		assert @p.type = "Praise"
+	end
 end

@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+prayer:
   title: MyString
   body: MyText
-  type: 
-  user_id: 
+  type: Prayer
+  person: person_with_name
 
-two:
+second_prayer:
+  title: MyString_too
+  body: MyText_too
+  type: Prayer
+  person: person_with_name
+
+praise:
   title: MyString
   body: MyText
-  type: 
-  user_id: 
+  type: Praise
+  person: person_with_name

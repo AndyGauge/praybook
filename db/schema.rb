@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029212845) do
+ActiveRecord::Schema.define(version: 20151110195751) do
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 20151029212845) do
     t.string   "title"
     t.text     "body"
     t.string   "type"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["person_id"], name: "index_posts_on_person_id"
 
 end

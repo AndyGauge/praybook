@@ -18,3 +18,5 @@
 
 # SimpleCov
 coverage
+cov
+public/coverage.zip

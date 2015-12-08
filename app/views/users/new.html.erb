@@ -1,1 +1,13 @@
-<%= render 'form' %>
+<% content_for :page_subtitle do %>
+	New Account
+<% end %>
+<div class="container">
+	<%= render 'shared/nav/top_out' %>
+	<div class="row afore-main">
+		<h1>Sign Up</h1>
+		<h6>Better than free</h6>
+	</div>
+	<div class="gray-boxy">
+		<%= render 'form' %>
+	</div>
+</div>

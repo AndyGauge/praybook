@@ -1,13 +1,19 @@
-<div class="row">
-	<div class="col-xs-11 col-sm-10 col-md-9 col-lg-8">
-		<%= render 'new' %>
-		<%# TODO: display existing prayers %>
+<% content_for :page_subtitle do %>
+	Prayers
+<% end %>
+<%= render 'new' %>
+<% @prayers.each do |prayer| %>
+<div class="col-md-2 col-xl-3"> 
+	<div class="row">
+		<%= button_to "\u2714 Complete", complete_prayer_path(prayer), method: :post , class: 'btn btn-danger btn-block'%>  
 	</div>
-	<div class="col-xs-1">
-		<%# TODO: display gradient in HTML5 %>
-	</div>
-	<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3">
-		<%# TODO: display Praise partial %>
+	<div class="row">
+		<%= link_to edit_prayer_path(prayer), class: 'btn btn-success btn-block', role: 'button' do %>
+		<%= icon :pencil, library: :font_awesome %> Edit
+		<% end %>
 	</div>
 </div>
-
+<div class="col-md-10 col-xl-9">
+	<%= panel prayer.body, heading: prayer.title %>
+</div>
+<% end %>

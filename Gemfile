@@ -13,8 +13,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap_form', '~> 2.3.0'
+
+#gem 'sprockets-rails', :require => 'sprockets/railtie'
+#github.com/twbs/bootstrap-rubygem
+#source 'https://rails-assets.org' do
+#  gem 'rails-assets-tether', '>= 1.1.0'
+#end
+#gem 'bootstrap', '~> 4.0.0.alpha1'
+
+gem 'bh'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
