@@ -1,10 +1,11 @@
-<nav class="navbar navbar-dark">
+<%= navbar do %>
+<%= vertical do %>
 	<a class="navbar-brand pb-navbar-brand" href='/'>PRAYBOOK</a>
 		<% if @user.guest? %>   <%# If new user display login information %>
-			<%= form_for :login, {url: '/login', layout: :inline, html: {class: "pull-right"}} do |login_form| %>
+			<%= form_for :login, url: '/login' do |login_form| %>
 				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
 				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
-				<%= login_form.submit "LOG IN", class: "btn btn-default btn-purple" %>
+				<%= login_form.submit "LOG IN" %>
 			<% end %>    <%# End login_form do block    %>
 		<% else %>     <%# If logged on display links %>	
 			<ul class="nav navbar-nav">
@@ -14,5 +15,7 @@
 			<%= pb_menu_item "login", path: logout_path, display:"Log Out" %>
 			</ul>
 		<% end %> 
+	<% end %> 
+<% end %> 
 	
 </nav>
