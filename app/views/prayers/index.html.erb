@@ -3,9 +3,17 @@
 <% end %>
 <%= render 'new' %>
 <% @prayers.each do |prayer| %>
-	<%= button_to "\u2714", complete_prayer_path(prayer) %>
-	<div class="pb-prayer-wrap">
-	<h3><a href="<%= edit_prayer_path(prayer) %>"><%= prayer.title %></a></h3>
-	<p><%= prayer.body %></p>
+<div class="col-md-2 col-xl-3"> 
+	<div class="row">
+		<%= button_to "\u2714 Complete", complete_prayer_path(prayer), method: :post , class: 'btn btn-danger btn-block'%>  
+	</div>
+	<div class="row">
+		<%= link_to edit_prayer_path(prayer), class: 'btn btn-success btn-block', role: 'button' do %>
+		<%= icon :pencil, library: :font_awesome %> Edit
+		<% end %>
+	</div>
+</div>
+<div class="col-md-10 col-xl-9">
+	<%= panel prayer.body, heading: prayer.title %>
 </div>
 <% end %>
