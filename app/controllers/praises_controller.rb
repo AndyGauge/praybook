@@ -1,12 +1,13 @@
 class PraisesController < ApplicationController
 	before_action :assign_current_user
+	before_action :new_praise, only: ['index', 'show']
 
 	def index
-		@praises = @user.praises.order(created_at: :desc)
-		@praise = Praise.new({person_id: @user.id})
+		praise_page 1
 	end
 	def show
-		@prayers = Praise.page(params[:id]).order(created_at: :desc)
+		praise_page params[:id]
+		render 'index'
 	end
 	def create
 		@praise = Praise.new(praise_param.merge({person_id: @user.id}))
@@ -27,6 +28,12 @@ class PraisesController < ApplicationController
 	end
 
 	private
+	def new_praise
+		@praise = Praise.new({person_id: @user.id})
+	end
+	def praise_page(num)
+		@praises = @user.praises.page(num).order(created_at: :desc)
+	end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
 	end

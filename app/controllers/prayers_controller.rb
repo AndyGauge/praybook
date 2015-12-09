@@ -1,12 +1,13 @@
 class PrayersController < ApplicationController
 	before_action :assign_current_user
+	before_action : :new_prayer, only: ['index', 'show']
 
 	def index
-		@prayers = @user.prayers.order(created_at: :desc)
-		@prayer = Prayer.new({person_id: @user.id})
+		prayer_page
 	end
 	def show
-		@prayers = Prayer.page(params[:id]).order(created_at: :desc)
+		prayer_page parms[:id]
+		render 'index'
 	end
 	def create
 		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
@@ -32,6 +33,12 @@ class PrayersController < ApplicationController
 	end
 	
 	private
+	def new_prayer
+		@prayer = Prayer.new({person_id: @user.id})
+	end
+	def prayer_page(num=1)
+		prayers = @user.prayers.page(num).order(created_at: :desc)
+	end
 	def assign_current_user
 		@user = current_user.becomes(User)
 	end

@@ -33,7 +33,7 @@ class PraisesControllerTest < ActionController::TestCase
 	end
 
 	test "should find one page of praise" do
-		get(:show, {id: 1)
+		get(:show, id: 1)
 		assert_response :success
 	end
 
