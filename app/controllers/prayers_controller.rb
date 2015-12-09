@@ -6,7 +6,7 @@ class PrayersController < ApplicationController
 		prayer_page
 	end
 	def show
-		prayer_page parms[:id]
+		prayer_page params[:id]
 		render 'index'
 	end
 	def create
@@ -37,7 +37,7 @@ class PrayersController < ApplicationController
 		@prayer = Prayer.new({person_id: @user.id})
 	end
 	def prayer_page(num=1)
-		prayers = @user.prayers.page(num).order(created_at: :desc)
+		@prayers = @user.prayers.page(num).order(created_at: :desc)
 	end
 	def assign_current_user
 		@user = current_user.becomes(User)

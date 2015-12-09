@@ -24,14 +24,14 @@ class PraisesController < ApplicationController
 	def update
 		@praise = find_user_praise
 		@praise.update!(praise_param) if @praise.present?
-		reditect_to index
+		redirect_to index
 	end
 
 	private
 	def new_praise
 		@praise = Praise.new({person_id: @user.id})
 	end
-	def praise_page(num)
+	def praise_page(num=1)
 		@praises = @user.praises.page(num).order(created_at: :desc)
 	end
 	def find_user_praise
