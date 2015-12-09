@@ -2,7 +2,7 @@
 	Praise
 <% end %>
 <%= render 'new' %>
-<% @praise.each do |praise| %>
+<% @praises.each do |praise| %>
 <div class="col-md-2 col-xl-3"> 
 	<div class="row">
 		<%= button_to "\u2714 Complete", complete_praise_path(praise), method: :post , class: 'btn btn-danger btn-block'%>  

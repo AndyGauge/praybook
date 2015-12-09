@@ -1,6 +1,6 @@
 class PrayersController < ApplicationController
 	before_action :assign_current_user
-	before_action : :new_prayer, only: ['index', 'show']
+	before_action :new_prayer, only: ['index', 'show']
 
 	def index
 		prayer_page
