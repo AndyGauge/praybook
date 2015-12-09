@@ -1,0 +1,19 @@
+<% content_for :page_subtitle do %>
+	Praise
+<% end %>
+<%= render 'new' %>
+<% @praise.each do |praise| %>
+<div class="col-md-2 col-xl-3"> 
+	<div class="row">
+		<%= button_to "\u2714 Complete", complete_praise_path(praise), method: :post , class: 'btn btn-danger btn-block'%>  
+	</div>
+	<div class="row">
+		<%= link_to edit_praise_path(praise), class: 'btn btn-success btn-block', role: 'button' do %>
+		<%= icon :pencil, library: :font_awesome %> Edit
+		<% end %>
+	</div>
+</div>
+<div class="col-md-10 col-xl-9">
+	<%= panel praise.body, heading: praise.title %>
+</div>
+<% end %>
