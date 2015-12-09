@@ -23,7 +23,7 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'bh'
 
-gem 'will_paginate' '~> 3.0'
+gem 'will_paginate', '~> 3.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
