@@ -24,7 +24,7 @@ class PraisesController < ApplicationController
 	def update
 		@praise = find_user_praise
 		@praise.update!(praise_param) if @praise.present?
-		redirect_to prayers_path
+		redirect_to praises_path
 	end
 
 	private
