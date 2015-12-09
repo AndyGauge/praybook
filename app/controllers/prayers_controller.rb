@@ -24,12 +24,12 @@ class PrayersController < ApplicationController
 	def update
 		@prayer = find_user_prayer
 		@prayer.update!(prayer_param) if @prayer.present?
-		redirect_to index
+		redirect_to prayers_path
 	end
 	def complete
 		@prayer = find_user_prayer
 		@prayer.complete! if @prayer.present?
-		redirect_to index
+		redirect_to prayers_path
 	end
 	
 	private
