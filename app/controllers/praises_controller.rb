@@ -1,17 +1,17 @@
 class PraisesController < ApplicationController
 	before_action :assign_current_user
-	before_action :select_praise_from_id, only: [:show]
-	
+
 	def index
 		@praises = @user.praises.order(created_at: :desc)
-		@praise = @Praise.new({person_id: @user.id})
+		@praise = Praise.new({person_id: @user.id})
 	end
 	def show
+		@prayers = Praise.page(params[:id]).order(created_at: :desc)
 	end
 	def create
 		@praise = Praise.new(praise_param.merge({person_id: @user.id}))
 		if @praise.save
-			redirect_to praise_path
+			redirect_to praises_path
 		else
 			flash[:alert] = @praise.errors
 			render 'edit'
@@ -27,11 +27,8 @@ class PraisesController < ApplicationController
 	end
 
 	private
-	def select_praise_from_id
-		@praise = @user.prayers.find_by_id(params[:id])
-	end
 	def find_user_praise
-		@user.praise.find_by_id(params[:id])
+		@user.praises.find_by_id(params[:id])
 	end
 	def assign_current_user
 		@user = current_user.becomes(User)

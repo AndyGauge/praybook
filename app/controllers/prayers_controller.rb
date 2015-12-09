@@ -6,7 +6,7 @@ class PrayersController < ApplicationController
 		@prayer = Prayer.new({person_id: @user.id})
 	end
 	def show
-		@prayer = Prayer.find(params[:id])
+		@prayers = Prayer.page(params[:id]).order(created_at: :desc)
 	end
 	def create
 		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))

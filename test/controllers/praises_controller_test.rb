@@ -32,8 +32,8 @@ class PraisesControllerTest < ActionController::TestCase
 		assert_redirected_to praises_path
 	end
 
-	test "should find praise outside user context through show" do
-		get(:show, {id: posts(:praise).id})
+	test "should find one page of praise" do
+		get(:show, {id: 1)
 		assert_response :success
 	end
 
