@@ -1,1 +1,1 @@
-web: bundle exec unicorn -C config/unicorn.rb
+web: bundle exec unicorn
