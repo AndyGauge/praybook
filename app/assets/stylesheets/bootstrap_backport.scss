@@ -86,7 +86,7 @@
 	background-color: default;
 }
 
-.nav>li.nav-item>a.pb-navbar-link:hover .nav>li.nav-item>a.pb-navbar-link:focus {
+.nav>li.nav-item>a.pb-navbar-link:hover, .nav>li.nav-item>a.pb-navbar-link:focus {
   text-decoration:none;
   background-color: #70A;
 }
