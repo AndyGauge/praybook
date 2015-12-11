@@ -41,12 +41,12 @@ class UsersControllerTest < ActionController::TestCase
 	end
 
 	test "should update User" do
-		post :update, user: {
-				name: "UserControllerTest:update-user", 
+		post( :update, user: {
+				name: "UserControllerTest:updateuser", 
 				email: "update_user@UserControllerTest", 
 				password: "passw0RD", 
 				password_confirmation: "passw0RD" 
-		}, {'current_user_id' => people(:guest_updates).id}
+		}, current_user_id: people(:guest_updates).id)
 		assert_redirected_to user_url
 	end
 end
