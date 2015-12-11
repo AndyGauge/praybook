@@ -18,12 +18,14 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		if @user.update(user_params.merge({type: "User"}))
+		@user.type = temp_type 
+		@user.update_columns(type: "User") unless temp_type
+		if @user.update(user_params)
 			redirect_to user_url
 		else
+			@user.update_columns(type: temp_type) unless temp_type
 			render :action => 'edit'
 		end
-
   end
 	def select_user_from_login
 		@user = current_user.becomes(User)
