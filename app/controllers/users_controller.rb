@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		@user.type = temp_type 
+		temp_type = @user.type
 		@user.update_columns(type: "User") unless temp_type
 		if @user.update(user_params)
 			redirect_to user_url
