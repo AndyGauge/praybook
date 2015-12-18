@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		if current_user.guest? && @user=User.create_from_person(current_user, user_params)
+		if current_user.guest? && @user=User.create_from_person(current_user, user_params) && @user.valid?
 			redirect_to user_url
 		elsif @user=current_user && @user.update(user_params)
 			redirect_to user_url
