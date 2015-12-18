@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 			if @user.persisted?
 				session[:current_user_id] = @user.id 
 				redirect_to user_url and return
+			end
 		else 
 			@user=current_user 
 			redirect_to user_url and return if @user.update(user_params)
