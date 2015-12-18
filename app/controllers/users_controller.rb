@@ -18,14 +18,14 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		if current_user.guest? && @user=User.create_from_person(current_user, user_params) && @user.valid?
-			redirect_to user_url
-		elsif @user=current_user && @user.update(user_params)
-			redirect_to user_url
-		else
-			@user ||= current_user.becomes(User)  #this should only be necessary if current_user.guest? fails
-			render :action => 'edit'
-		end
+		if current_user.guest? && @user=User.create_from_person(current_user, user_params)
+			redirect_to user_url and return if @user.persisted?
+		else 
+			@user=current_user 
+			redirect_to user_url and return if @user.update(user_params)
+		end		
+		@user ||= current_user.becomes(User) 
+		render :action => 'edit'		
   end
 	def select_user_from_login
 		@user = current_user.becomes(User)
