@@ -19,7 +19,9 @@ class UsersController < ApplicationController
 	end
 	def update
 		if current_user.guest? && @user=User.create_from_person(current_user, user_params)
-			redirect_to user_url and return if @user.persisted?
+			if @user.persisted?
+				session[:current_user_id] = @user.id 
+				redirect_to user_url and return
 		else 
 			@user=current_user 
 			redirect_to user_url and return if @user.update(user_params)

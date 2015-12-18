@@ -12,7 +12,7 @@ class User < Person
       association_foreign_key: :friend_id
 
 
-	#Create a user from Person
+	#Create a user from Person returns user
 	def self.create_from_person(whom, attrs)
 		@user = User.new(attrs)
 		@user.post_ids = whom.post_ids unless @user.invalid?
