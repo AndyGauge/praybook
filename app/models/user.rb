@@ -16,6 +16,7 @@ class User < Person
 	def self.create_from_person(whom, attrs)
 		@user = User.new(attrs)
 		@user.post_ids = whom.post_ids unless @user.invalid?
-		@user.save && whom.destroy
+		@user if @user.save && whom.destroy
+		nil
 	end
 end

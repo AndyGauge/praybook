@@ -26,3 +26,6 @@ email_user_with_bad_password:
 
 guest_updates:
   name:
+
+guest_update_bad:
+  name: 
