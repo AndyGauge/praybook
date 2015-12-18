@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :select_user_from_login, only: [:show, :edit, :update]
+	before_action :select_user_from_login, only: [:show, :edit]
 
 	def create
 		@user = User.new(user_params)
@@ -18,12 +18,12 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		temp_type = @user.type
-		@user.update_columns(type: "User") unless temp_type
-		if @user.update(user_params)
+		if current_user.guest? && @user=User.create_from_person(current_user, user_params)
+			redirect_to user_url
+		elsif @user=current_user && @user.update(user_params)
 			redirect_to user_url
 		else
-			@user.update_columns(type: temp_type) unless temp_type
+			@user ||= current_user.becomes(User)  #this should only be necessary if current_user.guest? fails
 			render :action => 'edit'
 		end
   end
