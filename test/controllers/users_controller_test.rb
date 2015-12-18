@@ -50,7 +50,7 @@ class UsersControllerTest < ActionController::TestCase
 		assert_redirected_to user_url
 	end
 
-	test "should not update User with bad password" do
+	test "should not update guest with bad password" do
 		post( :update, 
 			user: {name: "UserControllerTest:updateuser", 
 						email: "update_user@UserControllerTest", 
@@ -59,4 +59,15 @@ class UsersControllerTest < ActionController::TestCase
 			current_user_id: people(:guest_updates_bad).id)
 		assert_response :success
 	end
+
+	test "should not update user with bad password" do
+		post( :update, 
+			user: {name: "UserControllerTest:updateuser", 
+						email: "update_user@UserControllerTest", 
+						password: "passw0RD", 
+						password_confirmation: "" },
+			current_user_id: people(:user_who_can_update).id)
+		assert_response :success
+	end
+
 end
