@@ -1,5 +1,6 @@
 class PraisesController < ApplicationController
-	before_action :assign_current_user
+	include LoggedIn
+	before_action :select_user_from_login
 	before_action :new_praise, only: ['index', 'show']
 
 	def index
@@ -36,9 +37,6 @@ class PraisesController < ApplicationController
 	end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
-	end
-	def assign_current_user
-		@user = current_user.becomes(User)
 	end
 	def praise_param
 		params.require(:praise).permit(:body, :title)
