@@ -6,8 +6,12 @@ class FriendsController < ApplicationController
 		new_friend
 	end
 	def create
-		@user.friends.create(friendly_params)
-		render :action => 'index'
+		if @p = Person.find_by_email(params[:person][:email])
+			@user.friends << @p
+		else
+			@user.friends.create(friendly_params)
+		end
+		redirect_to friends_path
 	end
 
 	private
