@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :select_user_from_login, only: [:show, :edit]
+	before_action :select_user_from_login, only: [:show, :edit, :update]
 
 	def create
 		@user = User.new(user_params)
@@ -18,17 +18,11 @@ class UsersController < ApplicationController
 	def edit
 	end
 	def update
-		if current_user.guest? && @user=User.create_from_person(current_user, user_params)
-			if @user.persisted?
-				session[:current_user_id] = @user.id 
-				redirect_to user_url and return
-			end
-		else 
-			@user=current_user 
-			redirect_to user_url and return if @user.update(user_params)
-		end		
-		@user ||= current_user.becomes(User) 
-		render :action => 'edit'		
+		if @user.update(user_params)
+			redirect_to user_url 
+		else	
+			render :action => 'edit'		
+		end
   end
 	def select_user_from_login
 		@user = current_user.becomes(User)
