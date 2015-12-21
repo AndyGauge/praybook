@@ -10,16 +10,15 @@
 		<tr>
 			<td><%= pal.name %></td>
 			<td><%= pal.email %></td>
-			<td><%= button_to "Pray", "#" %>
-				<%= button_to "Drop", "#" %></td>
-		</tr>
-<% end -%>
-<% form_for @friend, url: friends_path, layout: :inline do |friend_form| %>
-		<tr>
-			<td><%= friend_form.text_field :name %></td>
-			<td><%= friend_form.email_field :email %></td>
-			<td><%= friend_form.submit class: "btn btn-primary" %></td>
+			<td><%= button_to "Pray", "#", form_class: 'form-inline', class: 'btn-success' %>
+				<%= button_to "Drop", "#", form_class: 'form-inline', class: 'btn-success' %></td>
 		</tr>
 <% end -%>
 	</table>
 </div>
+<% form_for @friend, url: friends_path, layout: :horizontal do |friend_form| %>
+	<%= friend_form.text_field :name %>
+	<%= friend_form.email_field :email %>
+	<%= friend_form.submit class: "btn btn-primary" %>
+<% end -%>
+	
