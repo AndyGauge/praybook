@@ -14,7 +14,7 @@
 				<%= button_to "Drop", "#" %></td>
 		</tr>
 <% end -%>
-<% form_for @user.friends.new, layout: :inline do |friend_form| %>
+<% form_for @friend, layout: :inline do |friend_form| %>
 		<tr>
 			<td><%= friend_form.text_field :name %></td>
 			<td><%= friend_form.email_field :email %></td>
