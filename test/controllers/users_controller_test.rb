@@ -10,8 +10,7 @@ class UsersControllerTest < ActionController::TestCase
 		post :create, user: { 
 			name: "", 
 			email: "", 
-			password: "", 
-			password_confirmation: ""
+			password: "" 
 		}
 		assert_response :success
 	end
@@ -21,8 +20,7 @@ class UsersControllerTest < ActionController::TestCase
 			post :create, user: { 
 				name: "UserControllerTest:test_user", 
 				email: "test_user@UserControllerTest", 
-				password: "passw0RD", 
-				password_confirmation: "passw0RD" 
+				password: "passw0RD"
 			}
 		end
 		assert_redirected_to user_url
@@ -39,5 +37,32 @@ class UsersControllerTest < ActionController::TestCase
 		end
 		assert_response :success
 	end
-		
+
+	test "should update User" do
+		post( :update, user: {
+				name: "UserControllerTest:updateuser", 
+				email: "update_user@UserControllerTest", 
+				password: "passw0RD"
+		}, current_user_id: people(:guest_updates).id)
+		assert_redirected_to user_url
+	end
+
+	test "should not update guest with bad password" do
+		post( :update, 
+			user: {name: "UserControllerTest:updateuser", 
+						email: "update_user@UserControllerTest", 
+						password: "" },
+			current_user_id: people(:guest_updates_bad).id)
+		assert_response :success
+	end
+
+	test "should not update user with bad name" do
+		post( :update, 
+			user: {name: "", 
+						email: "update_user@UserControllerTest", 
+						password: "passw0RD" },
+			current_user_id: people(:user_who_can_update).id)
+		assert_response :success
+	end
+
 end

@@ -23,3 +23,15 @@ email_user_with_bad_password:
   email: bobtoo@email.com
   name: Bob bobster
   type: User
+
+guest_updates:
+  name:
+
+guest_updates_bad:
+  name: 
+
+user_who_can_update:
+  email: anybody@email.com
+  name: notbob
+  password_digest: <%= BCrypt::Password.create("password") %>
+  type: User

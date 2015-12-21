@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-  	@current_user ||= session[:current_user_id] ? Person.find(session[:current_user_id]) : new_guest_user
+  	session[:current_user_id] ? Person.find(session[:current_user_id]) : new_guest_user
   end
 
   def new_guest_user

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :select_user_from_login, only: [:show, :edit]
+	before_action :select_user_from_login, only: [:show, :edit, :update]
 
 	def create
 		@user = User.new(user_params)
@@ -10,21 +10,26 @@ class UsersController < ApplicationController
 			render :action => 'edit'
 		end
 	end
-
 	def new
 		@user = User.new
 	end
-
 	def show
 	end
-
 	def edit
 	end
+	def update
+		if @user.update(user_params)
+			@user.update(type: "User") if current_user.guest?
+			redirect_to user_url 
+		else	
+			render :action => 'edit'		
+		end
+  end
 	def select_user_from_login
 		@user = current_user.becomes(User)
 	end
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password)
 	end
 
 end
