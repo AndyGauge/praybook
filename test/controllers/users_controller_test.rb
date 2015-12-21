@@ -55,7 +55,7 @@ class UsersControllerTest < ActionController::TestCase
 			user: {name: "UserControllerTest:updateuser", 
 						email: "update_user@UserControllerTest", 
 						password: "passw0RD", 
-						password_confirmation: "" },
+						password_confirmation: "pass" },
 			current_user_id: people(:guest_updates_bad).id)
 		assert_response :success
 	end
@@ -65,7 +65,7 @@ class UsersControllerTest < ActionController::TestCase
 			user: {name: "UserControllerTest:updateuser", 
 						email: "update_user@UserControllerTest", 
 						password: "passw0RD", 
-						password_confirmation: "" },
+						password_confirmation: "pass" },
 			current_user_id: people(:user_who_can_update).id)
 		assert_response :success
 	end
