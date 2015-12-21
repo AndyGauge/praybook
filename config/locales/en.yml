@@ -22,7 +22,7 @@
 en:
   hello: "Hello world"
   helpers:
-  	submit:
-  	  user:
-  	    create: "Sign Up"
-  	    update: "Update"
+    submit:
+      user:
+        create: "Sign Up"
+        update: "Update"
