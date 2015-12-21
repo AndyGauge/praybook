@@ -11,7 +11,6 @@ class Person < ActiveRecord::Base
 	end
 
 	def password; end
-	def password_confirmation; end
 
 	private
 	def capitalize_name

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	end
 	def update
 		if @user.update(user_params)
-			@user.update(type: "User")
+			@user.update(type: "User") if current_user.guest?
 			redirect_to user_url 
 		else	
 			render :action => 'edit'		
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 		@user = current_user.becomes(User)
 	end
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password)
 	end
 
 end
