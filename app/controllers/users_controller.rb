@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 	end
 	def update
 		if @user.update(user_params)
+			@user.update(type: "User")
 			redirect_to user_url 
 		else	
 			render :action => 'edit'		
