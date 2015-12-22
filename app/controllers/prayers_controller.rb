@@ -15,7 +15,7 @@ class PrayersController < ApplicationController
 		if @prayer.save
 			redirect_to prayers_path
 		else
-			flash[:alert] = @prayer.errors unless params[:noerrors]
+			flash[:alert] = @prayer.errors
 			render 'edit'
 		end
 	end
