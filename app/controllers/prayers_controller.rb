@@ -35,7 +35,7 @@ class PrayersController < ApplicationController
 	
 	private
 	def new_prayer
-		@prayer = @user.prayers.new(prayer_param)
+		@prayer = @user.prayers.new(params.permit(prayer: [:body])[:prayer])
 	end
 	def prayer_page(num=1)
 		@prayers = @user.prayers.page(num).order(created_at: :desc)
