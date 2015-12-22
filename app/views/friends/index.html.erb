@@ -10,7 +10,7 @@
 		<tr>
 			<td><%= pal.name %></td>
 			<td><%= pal.email %></td>
-			<td><%= button_to "Pray", prayers_path, form_class: 'form-inline', class: 'btn btn-success btn-block', params: { 'prayer[body]' => "@#{pal.name}" } %>
+			<td><%= button_to "Pray", prayers_path, method: "get", form_class: 'form-inline', class: 'btn btn-success btn-block', params: { 'prayer[body]' => "@#{pal.name}", noerrors: true } %>
 				<%= button_to "Drop", friend_path(pal.id), method: "delete", form_class: 'form-inline', class: 'btn btn-danger btn-block', data: {confirm: "Do you want to excommunicate #{pal.name} from your list of friends?"} %></td>
 		</tr>
 <% end -%>
