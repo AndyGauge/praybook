@@ -3,15 +3,15 @@
 		<tr> <%# Table Header Row %>
 			<th>name</th>
 			<th>email</th>
-			<th>#</th>
+			<th>&nbsp;</th>
 		</tr>
 
 <% @user.friends.each do |pal| -%>
 		<tr>
 			<td><%= pal.name %></td>
 			<td><%= pal.email %></td>
-			<td><%= button_to "Pray", "#", form_class: 'form-inline', class: 'btn-success' %>
-				<%= button_to "Drop", "#", form_class: 'form-inline', class: 'btn-success' %></td>
+			<td><%= button_to "Pray", prayers_path, form_class: 'form-inline', class: 'btn btn-success btn-block', params: { prayer: { :body => "@#{pal.name}" } } %>
+				<%= button_to "Drop", friend_path(pal.id), method: "delete", form_class: 'form-inline', class: 'btn btn-danger btn-block', data: {confirm: "Do you want to excommunicate #{pal.name} from your list of friends?"} %></td>
 		</tr>
 <% end -%>
 	</table>

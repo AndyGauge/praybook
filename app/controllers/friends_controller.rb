@@ -13,7 +13,13 @@ class FriendsController < ApplicationController
 		end
 		redirect_to friends_path
 	end
-
+	def destroy
+		if @del_me = @user.friends.find_by_id(params[:id])
+			@user.friends.delete(@del_me)
+		end
+		redirect_to friends_path
+	end
+	
 	private
 	def new_friend
 		@friend = Person.new
