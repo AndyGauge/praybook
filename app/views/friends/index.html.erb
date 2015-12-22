@@ -1,0 +1,24 @@
+<div class="table-responsive">
+	<table class="table">
+		<tr> <%# Table Header Row %>
+			<th>name</th>
+			<th>email</th>
+			<th>#</th>
+		</tr>
+
+<% @user.friends.each do |pal| -%>
+		<tr>
+			<td><%= pal.name %></td>
+			<td><%= pal.email %></td>
+			<td><%= button_to "Pray", "#", form_class: 'form-inline', class: 'btn-success' %>
+				<%= button_to "Drop", "#", form_class: 'form-inline', class: 'btn-success' %></td>
+		</tr>
+<% end -%>
+	</table>
+</div>
+<%= form_for(@friend, url: friends_path, layout: :horizontal) do |friend_form| %>
+	<%= friend_form.text_field :name %>
+	<%= friend_form.email_field :email %>
+	<%= friend_form.submit class: "btn btn-primary" %>
+<% end -%>
+	

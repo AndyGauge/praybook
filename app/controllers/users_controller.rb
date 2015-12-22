@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	include LoggedIn
 	before_action :select_user_from_login, only: [:show, :edit, :update]
 
 	def create
@@ -25,11 +25,7 @@ class UsersController < ApplicationController
 			render :action => 'edit'		
 		end
   end
-	def select_user_from_login
-		@user = current_user.becomes(User)
-	end
 	def user_params
 		params.require(:user).permit(:name, :email, :password)
 	end
-
 end
