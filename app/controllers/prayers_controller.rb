@@ -11,7 +11,7 @@ class PrayersController < ApplicationController
 		render 'index'
 	end
 	def create
-		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
+		@prayer = @user.prayers.new(prayer_param)
 		if @prayer.save
 			redirect_to prayers_path
 		else
