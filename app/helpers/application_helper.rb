@@ -5,4 +5,8 @@ module ApplicationHelper
        <a class=\"nav-link pb-navbar-link\"href=\"#{path}\">#{display}</a>
      </li>".html_safe
   end
+  def pb_bottom_menu(items)
+    items.inject("") {|collects, item| 
+      collects + "<li class=\"nav-item\"><%= link_to '#{item.titleize}', #{send "#{item}_path"}, class: \"nav-link\" %></li>"
+    }.html_safe
 end
