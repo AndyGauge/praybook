@@ -1,23 +1,30 @@
 <% content_for :page_subtitle do %>
 	Join Praybook | Login
 <% end %>
+<% if @user.guest? -%>
 <div class="row afore-main">
-	<h1>Sign Up</h1>
-	<h6>Better than free</h6>
+	<div class="col-sm-12">
+		<h1>Sign Up</h1>
+		<h6>Better than free</h6>
+	</div>
 </div>
 <div class="gray-boxy row">
-	
-	<%= render 'users/form' if @user.guest? %>
+	<div class="col-sm-12">
+		<%= render 'users/form' %>
+	</div>
 </div>
 <div class="row afore-main">
-	<h1>Not ready?</h1>
-	<h6>No commitment required -- try it first</h6>
+	<div class="col-sm-12">
+		<h1>Not ready?</h1>
+		<h6>No commitment required -- try it first</h6>
+	</div>
 	<div class="col-md-3 col-xl-4">&nbsp;</div>
 	<div class="col-md-6 col-xl-4">
 		<a class="btn btn-success btn-lg btn-block" href="<%= prayers_path %>">Try for free</a>
 	</div>
 	<div class="col-md-3 col-xl-4">&nbsp;</div>
 </div>
+<% end -%>
 <div class="row">
 	<div class="col-sm-12 afore-main">
 	  </br>
@@ -27,6 +34,3 @@
 	  <p> Answered prayers become praises, remember them with the rest of your thanksgivings.</p>
 	</div>
 </div>
-
-
-

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resource :login, :only => [:new, :create, :show]
   # Log out with safe post action
   get '/logout', to: 'logins#destroy', as: :logout
+  # Users have friends who are people
+  resources :friends, :only => [:index, :create, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -10,6 +10,8 @@ class Person < ActiveRecord::Base
 		!self.type
 	end
 
+	def password; end
+
 	private
 	def capitalize_name
 		self.name = self.name.to_s.titleize

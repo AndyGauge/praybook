@@ -2,6 +2,5 @@
 	<%= user_form.text_field :name, wrapper: {class: 'row'} %>
 	<%= user_form.email_field :email, wrapper: {class: 'row'} %>
 	<%= user_form.password_field :password, wrapper: {class: 'row'} %>
-	<%= user_form.password_field :password_confirmation, wrapper: {class: 'row'} %>
-	<%= user_form.submit "Sign Up", class: "btn btn-primary btn-lg" %>
+	<%= user_form.submit class: "btn btn-primary btn-lg" %>
 <% end %>

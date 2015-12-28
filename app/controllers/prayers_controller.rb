@@ -1,5 +1,6 @@
 class PrayersController < ApplicationController
-	before_action :assign_current_user
+	include LoggedIn
+	before_action :select_user_from_login
 	before_action :new_prayer, only: ['index', 'show']
 
 	def index
@@ -10,7 +11,7 @@ class PrayersController < ApplicationController
 		render 'index'
 	end
 	def create
-		@prayer = Prayer.new(prayer_param.merge({person_id: @user.id}))
+		@prayer = @user.prayers.new(prayer_param)
 		if @prayer.save
 			redirect_to prayers_path
 		else
@@ -34,13 +35,10 @@ class PrayersController < ApplicationController
 	
 	private
 	def new_prayer
-		@prayer = Prayer.new({person_id: @user.id})
+		@prayer = @user.prayers.new(params.permit(prayer: [:body])[:prayer])
 	end
 	def prayer_page(num=1)
 		@prayers = @user.prayers.page(num).order(created_at: :desc)
-	end
-	def assign_current_user
-		@user = current_user.becomes(User)
 	end
 	def find_user_prayer
 		@user.prayers.find_by_id(params[:id])
