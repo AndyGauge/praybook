@@ -7,7 +7,7 @@ module ApplicationHelper
   end
   def pb_bottom_menu(items)
     items.inject("") {|collects, item| 
-      collects + "<li class=\"nav-item\"><%= link_to '#{item.titleize}', #{send "#{item}_path"}, class: \"nav-link\" %></li>"
-    }.html_safe
+      collects + "<li class=\"nav-item\">" + link_to(item.titleize, send("#{item}_path"), class: "nav-link") + "</li>"
+    }
   end
 end
