@@ -3,7 +3,8 @@ class Person < ActiveRecord::Base
 	has_many :posts
 	has_many :prayers
 	has_many :praises
-	has_and_belongs_to_many :for, class_name: "Post"
+	has_and_belongs_to_many :prayers_for, class_name: "Prayer"
+	has_and_belongs_to_many :praises_for, class_name: "Praise"
 
 	#TODO: add texting capibility
 	
