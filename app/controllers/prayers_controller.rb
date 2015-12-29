@@ -7,7 +7,7 @@ class PrayersController < ApplicationController
 		prayer_page
 	end
 	def show
-		prayer_page params[:id]
+		prayer_page params[:id].to_i
 		render 'index'
 	end
 	def create
