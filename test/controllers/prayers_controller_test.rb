@@ -33,7 +33,13 @@ class PrayersControllerTest < ActionController::TestCase
 	end
 
 	test "should find Prayer outside user context through show" do
-		get(:show, {id: 1})
+		get(:show, {id: 1}, {'current_user_id' => people(:person_with_name)})
+		assert_response :success
+	end
+
+	test "should find Prayer outside user context through show" do
+		Prayer.per_page=2
+		get(:show, {id: 2}, {'current_user_id' => people(:person_with_name)})
 		assert_response :success
 	end
 

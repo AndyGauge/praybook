@@ -11,6 +11,7 @@ second_prayer:
   body: MyText_too
   type: Prayer
   person: person_with_name
+  for: person_with_name
 
 praise:
   title: MyString
