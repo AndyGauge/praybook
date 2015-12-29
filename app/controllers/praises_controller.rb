@@ -7,7 +7,7 @@ class PraisesController < ApplicationController
 		praise_page 1
 	end
 	def show
-		praise_page params[:id]
+		praise_page params[:id].to_i
 		render 'index'
 	end
 	def create
@@ -34,6 +34,12 @@ class PraisesController < ApplicationController
 	end
 	def praise_page(num=1)
 		@praises = @user.praises.page(num).order(created_at: :desc)
+    if @praises.count < Praise.per_page && @praises.total_pages == num
+      @praises_for = @user.praises_for.limit(Praise.per_page - @praises.count) 
+    elsif @praises.total_pages < num
+      @praises_for = @user.praises_for.limit(Praise.per_page).offset(num * Praise.per_page - @praises.count)
+    end
+  end
 	end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
