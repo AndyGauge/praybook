@@ -37,9 +37,14 @@ class PrayersController < ApplicationController
 	def new_prayer
 		@prayer = @user.prayers.new(params.permit(prayer: [:body])[:prayer])
 	end
-	def prayer_page(num=1)
-		@prayers = @user.prayers.page(num).order(created_at: :desc)
-	end
+  def prayer_page(num=1)
+    @prayers = @user.prayers.order(created_at: :desc).page(num)
+    if @prayers.count < Prayer.per_page && @prayers.total_pages == num
+      @prayers_for = @user.prayers_for.limit(Prayer.per_page - @prayers.count) 
+    elsif @prayers.total_pages < num
+      @prayers_for = @user.prayers_for.limit(Prayer.per_page).offset(num * Prayer.per_page - @prayers.count)
+    end
+  end
 	def find_user_prayer
 		@user.prayers.find_by_id(params[:id])
 	end
