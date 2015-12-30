@@ -1,5 +1,6 @@
 class PraisesController < ApplicationController
 	include LoggedIn
+	include Pageable
 	before_action :select_user_from_login
 	before_action :new_praise, only: ['index', 'show']
 
@@ -33,14 +34,8 @@ class PraisesController < ApplicationController
 		@praise = Praise.new({person_id: @user.id})
 	end
 	def praise_page(num=1)
-		@praises = @user.praises.page(num).order(created_at: :desc)
-    if @praises.count < Praise.per_page && @praises.total_pages == num
-      @praises_for = @user.praises_for.limit(Praise.per_page - @praises.count) 
-    elsif @praises.total_pages < num
-      @praises_for = @user.praises_for.limit(Praise.per_page).offset(num * Praise.per_page - @praises.count)
-    end
+		@praises, @praises_for = combo_page(@user.praises, @user.praise_for, page: num)
   end
-	end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
 	end
