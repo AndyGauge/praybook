@@ -34,7 +34,7 @@ class PraisesController < ApplicationController
 		@praise = Praise.new({person_id: @user.id})
 	end
 	def praise_page(num=1)
-		@praises, @praises_for = combo_page(@user.praises, @user.praise_for, page: num)
+		@praises, @praises_for = combo_page(@user.praises, @user.praises_for, page: num)
   end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
