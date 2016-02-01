@@ -17,3 +17,8 @@
 	<%= panel prayer.body, heading: prayer.title %>
 </div>
 <% end %>
+<% @prayers_for.each do |prayer| %>
+<div class="col-md-10 col-xl-9 col-md-offset-2 col-xl-offset-3">
+	<%= panel prayer.body, heading: prayer.title %>
+</div>
+<% end %>
