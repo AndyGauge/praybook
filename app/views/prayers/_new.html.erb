@@ -1,5 +1,4 @@
 <%= form_for(@prayer, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8") do |prayer_form| %>
-	<%= prayer_form.text_field :title, label: 'Prayer' %>
-	<%= prayer_form.text_area :body, label: 'Detail' %>
+	<%= prayer_form.text_area :title, label: 'Prayer' %>
 	<%= prayer_form.submit "In Jesus' name", class: "btn btn-primary btn-lg" %>
 <% end %>
