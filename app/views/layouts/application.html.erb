@@ -8,7 +8,7 @@
   <title>Praybook | <%= yield :page_subtitle %></title>
   <%# load bootstrap and then application for override %>
   <%= stylesheet_link_tag ENV['RAILS_ENV'] == "production" ? bootstrap_css : "/bootstrap/css/bootstrap.css" %>
-  <%= stylesheet_link_tag font_awesome_css %>
+  <%= stylesheet_link_tag ENV['RAILS_ENV'] == "production" ? font_awesome_css : "/font-awesome/css/font-awesome.css" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

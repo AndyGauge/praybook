@@ -1,4 +1,16 @@
 <%= form_for(@prayer, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8") do |prayer_form| %>
-	<%= prayer_form.text_area :title, label: 'Prayer' %>
+	<div class="form-group">
+		<label class="col-sm-3 control-label" for="prayer_title">Prayer</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<a class="btn btn-default" id="friends_at">
+						<%= icon :user, library: :font_awesome %>
+					</a>
+				</span>
+				<textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"></textarea>
+			</div>
+		</div>
+	</div>
 	<%= prayer_form.submit "In Jesus' name", class: "btn btn-primary btn-lg" %>
 <% end %>
