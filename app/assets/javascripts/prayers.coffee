@@ -34,6 +34,9 @@ $ ->
           if(obj.name == names[0]) 
             append_prayer_for(obj.id)
         )
+    if (prayer_title.value == "")
+      while (d = document.getElementsByName("prayer[for][]")[0])
+        d.parentElement.removeChild(d)
     )
   $("a#friends_at").on('click', ->
     prayer_title.value = prayer_title.value + "@"

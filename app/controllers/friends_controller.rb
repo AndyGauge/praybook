@@ -20,7 +20,6 @@ class FriendsController < ApplicationController
 		redirect_to friends_path
 	end
 	def names
-		#render json: (@user.friends.reduce({}) do |f,k| f.merge({k.name => k.id}); end)
 		render json: (@user.friends.map do |f| {name: f.name, id: f.id};end)
 	end
 	

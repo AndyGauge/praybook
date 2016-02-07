@@ -13,6 +13,7 @@ class PrayersController < ApplicationController
 	end
 	def create
 		@prayer = @user.prayers.new(prayer_param)
+		params[:prayer][:for] && @prayer.for << Person.find(params[:prayer][:for])
 		if @prayer.save
 			redirect_to prayers_path
 		else
