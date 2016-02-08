@@ -32,8 +32,15 @@ class PrayersControllerTest < ActionController::TestCase
 		assert_redirected_to prayers_path
 	end
 
-	test "should find Prayer outside user context through show" do
-		get(:show, {id: 1})
+	test "should find Prayer and prayer_for on one page" do
+		Prayer.per_page=30  # Default
+		get(:show, {id: 1}, {'current_user_id' => people(:person_with_name).id})
+		assert_response :success
+	end
+
+	test "should find Prayer_for after prayers" do
+		Prayer.per_page=2
+		get(:show, {id: 2}, {'current_user_id' => people(:person_with_name).id})
 		assert_response :success
 	end
 

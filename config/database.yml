@@ -18,6 +18,7 @@ development:
   database: praybook_development
   username: ubuntu
   password: rails
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +29,7 @@ test:
   database: praybook_test
   username: ubuntu
   password: rails
+  host: localhost
 
 production:
   <<: *default

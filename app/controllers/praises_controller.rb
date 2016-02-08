@@ -1,5 +1,6 @@
 class PraisesController < ApplicationController
 	include LoggedIn
+	include Pageable
 	before_action :select_user_from_login
 	before_action :new_praise, only: ['index', 'show']
 
@@ -7,7 +8,7 @@ class PraisesController < ApplicationController
 		praise_page 1
 	end
 	def show
-		praise_page params[:id]
+		praise_page params[:id].to_i
 		render 'index'
 	end
 	def create
@@ -33,8 +34,8 @@ class PraisesController < ApplicationController
 		@praise = Praise.new({person_id: @user.id})
 	end
 	def praise_page(num=1)
-		@praises = @user.praises.page(num).order(created_at: :desc)
-	end
+		@praises, @praises_for = combo_page(@user.praises, @user.praises_for, page: num)
+  end
 	def find_user_praise
 		@user.praises.find_by_id(params[:id])
 	end

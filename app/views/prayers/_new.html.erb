@@ -1,5 +1,17 @@
 <%= form_for(@prayer, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8") do |prayer_form| %>
-	<%= prayer_form.text_field :title, label: 'Prayer' %>
-	<%= prayer_form.text_area :body, label: 'Detail' %>
+	<div class="form-group">
+		<label class="col-sm-3 control-label" for="prayer_title">Prayer</label>
+		<div class="col-sm-9">
+			<div style="display:none;background-color:#ffa" id="help_friends"><p>To pray for a friend, type an @ followed by their name.  The name will be completed for you once it is clear who you mean.</p></div>
+			<div class="input-group">
+				<span class="input-group-addon">
+					<a class="btn btn-default" id="friends_at">
+						<%= icon :user, library: :font_awesome %>
+					</a>
+				</span>
+				<textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"></textarea>
+			</div>
+		</div>
+	</div>
 	<%= prayer_form.submit "In Jesus' name", class: "btn btn-primary btn-lg" %>
 <% end %>

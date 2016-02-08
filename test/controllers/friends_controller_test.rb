@@ -30,4 +30,8 @@ class FriendsControllerTest < ActionController::TestCase
 	  end
 	  assert_redirected_to friends_path
 	end
+  test "should retrieve friend names" do
+	get :names, nil, current_user_id: people(:user_who_can_update).id
+	assert_response :success
+  end
 end

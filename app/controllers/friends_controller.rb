@@ -19,6 +19,9 @@ class FriendsController < ApplicationController
 		end
 		redirect_to friends_path
 	end
+	def names
+		render json: (@user.friends.map do |f| {name: f.name, id: f.id};end)
+	end
 	
 	private
 	def new_friend
