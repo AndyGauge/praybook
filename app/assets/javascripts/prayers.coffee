@@ -34,11 +34,14 @@ $ ->
           if(obj.name == names[0]) 
             append_prayer_for(obj.id)
         )
+        help_friends.style["display"]="none"
     if (prayer_title.value == "")
       while (d = document.getElementsByName("prayer[for][]")[0])
         d.parentElement.removeChild(d)
+      help_friends.style["display"]="none"
     )
   $("a#friends_at").on('click', ->
+    help_friends.style["display"]="block"
     prayer_title.value = prayer_title.value + "@"
     prayer_title.focus()
     )
