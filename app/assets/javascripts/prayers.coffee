@@ -23,7 +23,13 @@ append_prayer_for = (id) ->
   n.value = id
   n.name = "prayer[for][]"
   new_prayer.appendChild(n)
-
+load_friends = ->
+  req = new XMLHttpRequest()
+  req.open("GET", "/friends/names.json", true)
+  req.addEventListener("load", ->
+    prayer_title.setAttribute("data-friends", req.responseText)
+    )
+  req.send(null)
 ## OnLoad Event Systems:
 $ ->
   $("textarea#prayer_title").on('input', -> 
@@ -45,11 +51,4 @@ $ ->
     prayer_title.value = prayer_title.value + "@"
     prayer_title.focus()
     )
-
-  ## OnLoad AJAX request:
-  req = new XMLHttpRequest()
-  req.open("GET", "/friends/names.json", true)
-  req.addEventListener("load", ->
-    prayer_title.setAttribute("data-friends", req.responseText)
-    )
-  req.send(null)
+  load_friends()
