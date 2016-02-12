@@ -43,7 +43,7 @@ class PrayersController < ApplicationController
     @prayers, @prayers_for = combo_page(@user.prayers, @user.prayers_for, page: num)
   end
 	def find_user_prayer
-		@user.prayers.find_by_id(params[:id])
+		@user.prayers.find_by_id(params[:id]) || @user.prayers_for.find_by_id(params[:id])
 	end
 	def prayer_param
 		params.require(:prayer).permit(:body, :title)
