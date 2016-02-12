@@ -9,9 +9,12 @@
 						<%= icon :user, library: :font_awesome %>
 					</a>
 				</span>
-				<textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"></textarea>
+				<textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"><%= @prayer.title -%></textarea> 
 			</div>
 		</div>
 	</div>
 	<%= prayer_form.submit "In Jesus' name", class: "btn btn-primary btn-lg" %>
+	<% @prayer.for.each do |p| %>
+		<input type="hidden" name="prayer[for][]" value="<%= p.id %>" />
+	<% end %>
 <% end %>
