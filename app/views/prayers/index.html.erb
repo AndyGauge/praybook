@@ -2,5 +2,7 @@
 	Prayers
 <% end %>
 <%= render 'new' %>
-<%= render @prayers %>
-<%= render @prayers_for %>
+<div id="prayers">
+	<%= render @prayers if @prayers.present? %>
+	<%= render @prayers_for if @prayers_for.present? %>
+</div>
