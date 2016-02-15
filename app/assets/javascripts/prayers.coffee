@@ -31,7 +31,7 @@ load_friends = ->
     )
   req.send(null)
 ## OnLoad Event Systems:
-$ ->
+after_loads = ->
   $("textarea#prayer_title").on('input', -> 
     if (name=after_at(prayer_title.value)) != false
       if ((names=filter_names(friend_names(prayer_title), name)).length == 1)
@@ -53,3 +53,6 @@ $ ->
     )
   if $("textarea#prayer_title").size() > 0 
     load_friends()
+$(document).on("page:load", after_loads)
+$ ->
+  after_loads()
