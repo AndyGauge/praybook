@@ -32,6 +32,7 @@ load_friends = ->
   req.send(null)
 ## OnLoad Event Systems:
 after_loads = ->
+  nextPrayer=2
   $("textarea#prayer_title").on('input', -> 
     if (name=after_at(prayer_title.value)) != false
       if ((names=filter_names(friend_names(prayer_title), name)).length == 1)
@@ -53,6 +54,16 @@ after_loads = ->
     )
   if $("textarea#prayer_title").size() > 0 
     load_friends()
+    $(window).on("scroll", ->
+     if $(document).height() - $(window).height() - $(window).scrollTop() < 80 && nextPrayer > 0
+       $.ajax({
+         url: "prayers/"+nextPrayer++,
+         success: (response) ->
+           if response
+             $("div#prayers").append(response)
+           else nextPrayer = 0
+       })
+     ) 
 $(document).on("page:load", after_loads)
 $ ->
   after_loads()
