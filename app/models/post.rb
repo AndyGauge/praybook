@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
   
   belongs_to :person
   has_and_belongs_to_many :for, class_name: "Person"
+  self.per_page=10
 end
