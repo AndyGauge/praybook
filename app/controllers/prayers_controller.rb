@@ -9,7 +9,7 @@ class PrayersController < ApplicationController
 	end
 	def show
 		prayer_page params[:id].to_i
-		render 'index'
+		render layout: false
 	end
 	def create
 		@prayer = @user.prayers.new(prayer_param)

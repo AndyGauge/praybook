@@ -51,4 +51,5 @@ $ ->
     prayer_title.value = prayer_title.value + "@"
     prayer_title.focus()
     )
-  load_friends()
+  if $("textarea#prayer_title").size() > 0 
+    load_friends()
