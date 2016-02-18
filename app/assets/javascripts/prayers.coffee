@@ -24,12 +24,10 @@ append_prayer_for = (id) ->
   n.name = "prayer[for][]"
   new_prayer.appendChild(n)
 load_friends = ->
-  req = new XMLHttpRequest()
-  req.open("GET", "/friends/names.json", true)
-  req.addEventListener("load", ->
-    prayer_title.setAttribute("data-friends", req.responseText)
-    )
-  req.send(null)
+  $.ajax({
+    url: "/friends/names.json",
+    success: (response) ->
+      prayer_title.setAttribute("data-friends", JSON.stringify(response)) })
 ## OnLoad Event Systems:
 after_loads = ->
   nextPrayer=2
