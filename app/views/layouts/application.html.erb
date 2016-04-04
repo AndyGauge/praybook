@@ -6,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
   <title>Praybook | <%= yield :page_subtitle %></title>
-  <%# load bootstrap and then application for override %>
-  <%= stylesheet_link_tag ENV['RAILS_ENV'] == "production" ? bootstrap_css : "/bootstrap/css/bootstrap.css" %>
-  <%= stylesheet_link_tag ENV['RAILS_ENV'] == "production" ? font_awesome_css : "/font-awesome/css/font-awesome.css" %>
+  <%= stylesheet_link_tag bootstrap_css %>
+  <%= stylesheet_link_tag font_awesome_css %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag ENV['RAILS_ENV'] == "production" ? bootstrap_js : "/bootstrap/js/bootstrap.js" %>  
+  <%= javascript_include_tag bootstrap_js %>  
   <%= csrf_meta_tags %>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
