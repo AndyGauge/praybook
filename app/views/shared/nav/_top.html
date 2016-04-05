@@ -7,23 +7,23 @@
     <span class="icon-bar" style="background-color:#ccc"></span>
    </button>
  </div>
-		<% if @user.guest? && current_page?(root_path)%>   <%# If new user display login information on home page%>
-		<div class="collapse navbar-collapse in" id="pb-navbar-collapse">
-			<%= form_for :login, {url: '/login', layout: :inline, html: {class: "navbar-form navbar-right"}} do |login_form| %>
-				<%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
-				<%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
-				<%= login_form.submit "LOG IN" %>
-			<% end %>    <%# End login_form do block    %>
-		<% else %>     <%# If logged on display links %>	
+    <% if @user.guest? && current_page?(root_path)%>   <%# If new user display login information on home page%>
+    <div class="collapse navbar-collapse in" id="pb-navbar-collapse">
+      <%= form_for :login, {url: '/login', layout: :inline, html: {class: "navbar-form navbar-right"}} do |login_form| %>
+        <%= login_form.email_field :email, hide_label: true, placeholder: "email" %>
+        <%= login_form.password_field :password , skip_label: true, placeholder: "password" %>
+        <%= login_form.submit "LOG IN" %>
+      <% end %>    <%# End login_form do block    %>
+    <% else %>     <%# If logged on display links %>  
    <div class="collapse navbar-collapse" id="pb-navbar-collapse">
-   	<ul class="nav navbar-nav">
-			<%= pb_menu_item "prayers" %>
-			<%= pb_menu_item "praises" %>
-			<%= pb_menu_item "users", path: user_path, display: "Profile" %>
-			<%= pb_menu_item "friends" %>
-			<%= pb_menu_item "login", path: logout_path, display:"Log Out" %>
-			</ul>
+     <ul class="nav navbar-nav">
+      <%= pb_menu_item "prayers" %>
+      <%= pb_menu_item "praises" %>
+      <%= pb_menu_item "users", path: user_path, display: "Profile" %>
+      <%= pb_menu_item "friends" %>
+      <%= pb_menu_item "login", path: logout_path, display:"Log Out" %>
+      </ul>
 
-		<% end %> 
-		</div>
+    <% end %> 
+    </div>
 </nav>

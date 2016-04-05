@@ -1,6 +1,6 @@
 <%= form_for(@user, url: user_path, layout: :horizontal, label_col: "col-md-4", control_col: "col-md-7") do |user_form| %>
-	<%= user_form.text_field :name, wrapper: {class: 'row'} %>
-	<%= user_form.email_field :email, wrapper: {class: 'row'} %>
-	<%= user_form.password_field :password, wrapper: {class: 'row'} %>
-	<%= user_form.submit class: "btn btn-primary btn-lg" %>
+  <%= user_form.text_field :name, wrapper: {class: 'row'} %>
+  <%= user_form.email_field :email, wrapper: {class: 'row'} %>
+  <%= user_form.password_field :password, wrapper: {class: 'row'} %>
+  <%= user_form.submit class: "btn btn-primary btn-lg" %>
 <% end %>
