@@ -21,15 +21,15 @@
   <![endif]-->
 </head>
 <body>
-<div class="container">
   <%= render 'shared/nav/top' %>
 
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
 
-<div class="row" style="height: 70px;">
-  <div class="col-sm-12">&nbsp;</div>
-</div>
-</div>
-<%= render 'shared/nav/bottom' %>
+    <div class="row" style="height: 70px;">
+      <div class="col-sm-12">&nbsp;</div>
+    </div>
+  </div>
+  <%= render 'shared/nav/bottom' %>
 </body>
 </html>
