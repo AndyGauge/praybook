@@ -2,18 +2,7 @@
   Praise
 <% end %>
 <%= render 'new' %>
-<% @praises.each do |praise| %>
-<div class="col-md-2 col-xl-3"> 
-  <div class="row">
-    
-  </div>
-  <div class="row">
-    <%= link_to edit_praise_path(praise), class: 'btn btn-success btn-block', role: 'button' do %>
-    <%= icon :pencil, library: :font_awesome %> Edit
-    <% end %>
-  </div>
+<div id="praises">
+  <%= render @praises if @praises.present? %>
+  <%= render @praises_for if @praises_for.present? %>
 </div>
-<div class="col-md-10 col-xl-9">
-  <%= panel praise.body, heading: praise.title %>
-</div>
-<% end %>
