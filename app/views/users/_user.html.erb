@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-2 col-xl-3"> 
+    <div class="row">
+      <%= button_to "Pray", prayers_path, method: "get", form_class: 'form-inline', class: 'btn btn-success btn-block', params: { 'prayer[body]' => "@#{user.name}" } %>
+    </div>
+    <div class="row">
+      <% if @user.friends.include? user %>
+        <%= button_to "Drop", friend_path(user), method: :delete, form_class: 'form-inline', class: 'btn btn-danger btn-block', data: {confirm: "Do you want to excommunicate #{user.name} from your list of friends?"} %>
+      <% else %>
+        <%= button_to "Add", friend_path(user), method: :put, form_class: 'form-inline', class: 'btn btn-primary btn-block', data: {confirm: "Add #{user.name} to your friends?"} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-10 col-xl-9">
+    <%= panel "#{user.name}  <#{user.email}>" %>
+  </div>
+</div>

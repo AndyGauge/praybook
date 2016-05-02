@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228193835) do
+ActiveRecord::Schema.define(version: 20160428154102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,33 @@ ActiveRecord::Schema.define(version: 20151228193835) do
     t.integer "user_id",   null: false
     t.integer "friend_id", null: false
   end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "groups", ["location_id"], name: "index_groups_on_location_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
+  add_index "memberships", ["person_id"], name: "index_memberships_on_person_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
@@ -46,4 +73,7 @@ ActiveRecord::Schema.define(version: 20151228193835) do
 
   add_index "posts", ["person_id"], name: "index_posts_on_person_id", using: :btree
 
+  add_foreign_key "groups", "locations"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "people"
 end

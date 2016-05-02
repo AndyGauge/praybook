@@ -1,23 +1,9 @@
 <% content_for :page_subtitle do %>
   Friends
 <% end %>
-<div class="table-responsive">
-  <table class="table">
-    <tr> <%# Table Header Row %>
-      <th>name</th>
-      <th>email</th>
-      <th>&nbsp;</th>
-    </tr>
-
-<% @user.friends.each do |pal| -%>
-    <tr>
-      <td><%= pal.name %></td>
-      <td><%= pal.email %></td>
-      <td><%= button_to "Pray", prayers_path, method: "get", form_class: 'form-inline', class: 'btn btn-success btn-block', params: { 'prayer[body]' => "@#{pal.name}" } %>
-        <%= button_to "Drop", friend_path(pal.id), method: "delete", form_class: 'form-inline', class: 'btn btn-danger btn-block', data: {confirm: "Do you want to excommunicate #{pal.name} from your list of friends?"} %></td>
-    </tr>
-<% end -%>
-  </table>
+<div>
+  <%= render 'people/search' %>
+  <%= render @user.friends %>
 </div>
 <%= form_for(@friend, url: friends_path, layout: :horizontal) do |friend_form| %>
   <%= friend_form.text_field :name %>
