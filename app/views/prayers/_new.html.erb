@@ -14,6 +14,9 @@
     </div>
   </div>
   <%= prayer_form.submit "In Jesus' name", class: "btn btn-primary btn-lg" %>
+  <% if @for.present? %>
+    <input type="hidden" name="prayer[for][]" value="<%= @for.id %>" />
+  <% end %>
   <% @prayer.for.each do |p| %>
     <input type="hidden" name="prayer[for][]" value="<%= p.id %>" />
   <% end %>

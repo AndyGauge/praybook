@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-2 col-xl-3"> 
     <div class="row">
-      <%= button_to "Pray", prayers_path, method: "get", form_class: 'form-inline', class: 'btn btn-success btn-block', params: { 'prayer[body]' => "@#{person.name}" } %>
+      <button type="button" class="btn btn-success btn-block" data-toggle='modal' data-target= '.prayer-modal' data-for="<%= person.id %>">Pray</button>
     </div>
     <div class="row">
       <% if @user.friends.include? person %>
@@ -12,6 +12,6 @@
     </div>
   </div>
   <div class="col-sm-10 col-xl-9">
-    <%= panel person.email ? "#{person.name}  <#{person.email}>" : person.name %>
+    <%= panel person.email.present? ? "#{person.name}  <#{person.email}>" : person.name %>
   </div>
 </div>

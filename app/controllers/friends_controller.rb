@@ -26,6 +26,11 @@ class FriendsController < ApplicationController
   def pray
     @friend = Person.find(params[:id])
     @prayer = @user.prayers.new
+    @for = @friend
+    render json: {
+      'person' => @friend.name,
+        'html' => render_to_string(partial: 'pray.html.erb', locals: { friend: @friend, prayer: @prayer })
+    }
   end
   def names
     render json: (@user.friends.map { |f| { name: f.name, id: f.id } })

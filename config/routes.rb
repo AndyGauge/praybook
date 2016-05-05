@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'pray', on: :member
   end
   resources :groups do
-    resources :memberships, :only => [:index], on: :member
+    resources :memberships, :only => [:index]
     post 'join', on: :member
   end
   

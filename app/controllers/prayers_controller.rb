@@ -8,7 +8,7 @@ class PrayersController < ApplicationController
     prayer_page
   end
   def show
-    prayer_page params[:id].to_i
+    prayer_page params.permit(:id)[:id].to_i
     render layout: false
   end
   def create
@@ -23,6 +23,7 @@ class PrayersController < ApplicationController
   end
   def edit
     @prayer = find_user_prayer || Prayer.new({person_id: @user.id})
+    render html: render_to_string(partial: 'edit.html.erb')
   end
   def update
     @prayer = find_user_prayer

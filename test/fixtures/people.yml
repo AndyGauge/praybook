@@ -36,3 +36,6 @@ user_who_can_update:
   password_digest: <%= BCrypt::Password.create("password") %>
   type: User
   friends: person_with_name, email_user_who_is_valid
+
+simon:
+  name: Simon

@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  group_id: 
-  person: 
-
-two:
-  group_id: 
-  person: 
+simon:
+  group: disciples
+  person: simon

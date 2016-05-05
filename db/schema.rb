@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20160428154102) do
     t.string   "title"
     t.text     "body"
     t.string   "type"
-    t.integer  "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "person_id"
   end
 
   add_index "posts", ["person_id"], name: "index_posts_on_person_id", using: :btree
@@ -76,4 +76,5 @@ ActiveRecord::Schema.define(version: 20160428154102) do
   add_foreign_key "groups", "locations"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "people"
+  add_foreign_key "posts", "people"
 end

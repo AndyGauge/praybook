@@ -29,7 +29,7 @@ load_friends = ->
     success: (response) ->
       prayer_title.setAttribute("data-friends", JSON.stringify(response)) })
 ## OnLoad Event Systems:
-after_loads = ->
+prayerPageReady = ->
   nextPrayer=2
   $("textarea#prayer_title").on('input', -> 
     if (name=after_at(prayer_title.value)) != false
@@ -62,6 +62,26 @@ after_loads = ->
            else nextPrayer = 0
        })
      ) 
-$(document).on("page:load", after_loads)
+  $('.prayer-modal').on('show.bs.modal', (event) ->
+    forId = $(event.relatedTarget).data('for')
+    prayerId = $(event.relatedTarget).data('prayer')
+    modal = $(this)
+    if typeof forId != "undefined"
+      $.ajax
+        url: "/friends/#{forId}/pray",
+        success: (response) ->
+          person = response['person']
+          html = response['html']
+          modal.find('.modal-title').text("Prayer For #{person}")
+          modal.find('.modal-body').empty().append(html) 
+          prayerPageReady
+    if typeof prayerId != "undefined"
+      $.ajax
+        url: "/prayers/#{prayerId}/edit",
+        success: (response) ->
+          modal.find('.modal-title').text("Edit Prayer")
+          modal.find('.modal-body').empty().append(response) 
+          prayerPageReady )
+$(document).on("page:load", prayerPageReady)
 $ ->
-  after_loads()
+  prayerPageReady()
