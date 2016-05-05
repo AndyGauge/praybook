@@ -19,8 +19,25 @@ class FriendsController < ApplicationController
     end
     redirect_to friends_path
   end
+  def update
+    @user.friends << Person.find(params[:id])
+    redirect_to friends_path
+  end
+  def pray
+    @friend = Person.find(params[:id])
+    @prayer = @user.prayers.new
+    @for = @friend
+    render json: {
+      'person' => @friend.name,
+        'html' => render_to_string(partial: 'pray.html.erb', locals: { friend: @friend, prayer: @prayer })
+    }
+  end
   def names
-    render json: (@user.friends.map do |f| {name: f.name, id: f.id};end)
+    render json: (@user.friends.map { |f| { name: f.name, id: f.id } })
+  end
+  def find
+    all_results = Person.where('LOWER(name) LIKE ?', "%#{params[:person][:name].downcase}%") - [@user] if params[:person] && params[:person][:name]
+    @people = ([] << (all_results && @user.friends) << (all_results - @user.friends)).flatten
   end
   
   private
