@@ -1,5 +1,5 @@
 <div class="row">
-<% unless prayer.person == @user %>
+<% unless prayer.person.becomes(User) == @user && prayer.person.name.present? %>
 <div class="col-sm-12"> <%= prayer.person.name %> is praying for you that </div>
 <div class="row">
 <% end %>
