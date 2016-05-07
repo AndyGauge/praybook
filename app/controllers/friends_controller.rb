@@ -33,7 +33,7 @@ class FriendsController < ApplicationController
     }
   end
   def names
-    render json: (@user.friends.map { |f| { name: f.name, id: f.id } })
+    render json: (@user.friends.reject { |f| f.name.blank? }.map { |f| { name: f.name, id: f.id } })
   end
   def find
     all_results = Person.where('LOWER(name) LIKE ?', "%#{params[:person][:name].downcase}%") - [@user] if params[:person] && params[:person][:name]

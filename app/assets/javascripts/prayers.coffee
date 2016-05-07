@@ -6,8 +6,8 @@ after_at = (text) ->
     return text.substr(text.lastIndexOf("@") + 1)
   else
     false
-friend_names = (obj) ->
-  JSON.parse(obj.getAttribute("data-friends")).map( (f) ->
+friend_names = ->
+  $('#prayer_title').data("friends").map( (f) ->
     f.name
   )
 filter_names = (list, key) ->
@@ -27,28 +27,30 @@ load_friends = ->
   $.ajax({
     url: "/friends/names.json",
     success: (response) ->
-      prayer_title.setAttribute("data-friends", JSON.stringify(response)) })
+      $('#prayer_title').data("friends", response) })
 ## OnLoad Event Systems:
 prayerPageReady = ->
   nextPrayer=2
   $("textarea#prayer_title").on('input', -> 
-    if (name=after_at(prayer_title.value)) != false
-      if ((names=filter_names(friend_names(prayer_title), name)).length == 1)
-        prayer_title.value = prayer_title.value.slice(0, prayer_title.value.lastIndexOf("@")) + names[0] + " "
-        JSON.parse(prayer_title.getAttribute("data-friends")).forEach( (obj) ->
+    prayer_syntax = $('#prayer_title').val()
+    if (name=after_at(prayer_syntax)) != false
+      if ((names=filter_names(friend_names(), name)).length == 1)
+        $('#prayer_title').val(prayer_syntax.slice(0, prayer_syntax.lastIndexOf("@")) + names[0] + " ")
+        $('#prayer_title').data("friends").forEach( (obj) ->
           if(obj.name == names[0]) 
             append_prayer_for(obj.id)
         )
-        help_friends.style["display"]="none"
+        $('#help_friends').css("display","none")
     if (prayer_title.value == "")
       while (d = document.getElementsByName("prayer[for][]")[0])
         d.parentElement.removeChild(d)
-      help_friends.style["display"]="none"
+      $('#help_friends').css("display","none")
     )
   $("a#friends_at").on('click', ->
-    help_friends.style["display"]="block"
-    prayer_title.value = prayer_title.value + "@"
-    prayer_title.focus()
+    $('#help_friends').css("display","block")
+    prayer_syntax = $('#prayer_title').val()
+    $('#prayer_title').val(prayer_syntax + "@")
+    $('#prayer_title').focus()
     )
   if $("textarea#prayer_title").size() > 0 
     load_friends()
