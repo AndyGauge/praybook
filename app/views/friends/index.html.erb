@@ -8,6 +8,6 @@
 <%= form_for(@friend, url: friends_path, layout: :horizontal) do |friend_form| %>
   <%= friend_form.text_field :name %>
   <%= friend_form.email_field :email %>
-  <%= friend_form.submit class: "btn btn-primary" %>
+  <%= friend_form.submit 'Add Friend', class: "btn btn-primary" %>
 <% end -%>
 <%= render 'prayers/modal' %>  
