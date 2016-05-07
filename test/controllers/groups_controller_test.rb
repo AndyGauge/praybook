@@ -23,6 +23,11 @@ class GroupsControllerTest < ActionController::TestCase
 
     assert_redirected_to group_path(assigns(:group))
   end
+  
+  test "should not create group" do
+    post :create, group: {name: nil}
+    assert_response :success
+  end
 
   test "should show group members" do
     get :show, id: @group
@@ -35,8 +40,13 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "should update group" do
-    patch :update, id: @group, group: {name: "Group name"  }
+    patch :update, id: @group, group: { name: "Group name"  }
     assert_redirected_to group_path(assigns(:group))
+  end
+
+  test "should not update group" do
+    patch :update, id: @group, group: { name: nil }
+    assert_response :success
   end
 
   test "should destroy group" do
@@ -45,5 +55,10 @@ class GroupsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to groups_path
+  end
+
+  test "should join group" do
+    post :join, {id: @group}, current_user_id: people(:person_with_name).id
+    assert_redirected_to groups_path 
   end
 end

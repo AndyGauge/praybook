@@ -27,7 +27,7 @@ class PrayersController < ApplicationController
   end
   def update
     @prayer = find_user_prayer
-    @prayer.update!(prayer_param) if @prayer.present?
+    @prayer.update!(prayer_param) if @prayer.present? && params[:prayer][:title].present?
     redirect_to prayers_path
   end
   def complete
