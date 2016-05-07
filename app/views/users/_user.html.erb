@@ -1,15 +1,17 @@
 <div class="row">
-  <div class="col-sm-2"> 
-    <button type="button" class="btn btn-success btn-block" data-toggle='modal' data-target= '.prayer-modal' data-for="<%= user.id %>">Pray</button>
+  <div class="col-sm-3 col-lg-2">
+    <div class="btn-group btn-group-justified">
+      <div class="btn-group">
+        <button role="button" class="btn btn-success" data-toggle='modal' data-target='.prayer-modal' data-for="<%= user.id %>">Pray</button>
+      </div>
+      <% if @user.friends.include? user %>
+        <%= button_to "Drop", friend_path(user), method: :delete, form_class: 'form-inline  btn-group', class: 'btn btn-danger', data: {confirm: "Do you want to excommunicate #{user.name} from your list of friends?"} %>
+      <% elsif user != @user %>
+        <%= button_to "Add", friend_path(user), method: :put, form_class: 'form-inline btn-group', class: 'btn btn-primary', data: {confirm: "Add #{user.name} to your friends?"} %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-2">
-    <% if @user.friends.include? user %>
-      <%= button_to "Drop", friend_path(user), method: :delete, form_class: 'form-inline', class: 'btn btn-danger btn-block', data: {confirm: "Do you want to excommunicate #{user.name} from your list of friends?"} %>
-    <% elsif user != @user %>
-      <%= button_to "Add", friend_path(user), method: :put, form_class: 'form-inline', class: 'btn btn-primary btn-block', data: {confirm: "Add #{user.name} to your friends?"} %>
-    <% end %>
-  </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9 col-lg-10">
     <%= panel "#{user.name}  <#{user.email}>" %>
   </div>
 </div>
