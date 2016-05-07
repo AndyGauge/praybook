@@ -37,7 +37,7 @@ class FriendsController < ApplicationController
   end
   def find
     all_results = Person.where('LOWER(name) LIKE ?', "%#{params[:person][:name].downcase}%") - [@user] if params[:person] && params[:person][:name]
-    @people = ([] << (all_results && @user.friends) << (all_results - @user.friends)).flatten
+    @people = ([] << (all_results & @user.friends) << (all_results - @user.friends)).flatten
   end
   
   private
