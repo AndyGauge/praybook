@@ -23,3 +23,6 @@
 coverage
 cov
 public/coverage.zip
+/public/packs
+/public/packs-test
+/node_modules
