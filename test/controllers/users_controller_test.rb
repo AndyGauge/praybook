@@ -1,67 +1,77 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class UsersControllerTest < ActionDispatch::IntegrationTest
 	test "can get new user form" do
-		get :new
+		get new_user_path
 		assert_response :success
 	end
 
 	test "can submit user blank" do
-		post :create, user: { 
-			name: "", 
-			email: "", 
-			password: "" 
-		}
+		post user_path, params: {
+			user: {
+		    name: "",
+		    email: "",
+		    password: ""
+	    }
+	  }
 		assert_response :success
 	end
 
 	test "should create new user" do
 		assert_difference('User.count') do
-			post :create, user: { 
-				name: "UserControllerTest:test_user", 
-				email: "test_user@UserControllerTest", 
-				password: "passw0RD"
-			}
+			post user_path, params: {
+				user: {
+			    name: "UserControllerTest:test_user",
+			    email: "test_user@UserControllerTest",
+			    password: "passw0RD"
+		    }
+		  }
 		end
 		assert_redirected_to user_url
 	end
 
 	test "should inflect User class on person" do
-		get :show, {}, {'current_user_id' => people(:guest).id}
+		get user_path
 		assert_response :success
 	end
 
 	test "should create Person when trying application" do
 		assert_difference('Person.count') do
-			get :edit
+			get edit_user_path
 		end
 		assert_response :success
 	end
 
 	test "should update User" do
-		post( :update, user: {
-				name: "UserControllerTest:updateuser", 
-				email: "update_user@UserControllerTest", 
-				password: "passw0RD"
-		}, current_user_id: people(:guest_updates).id)
+		put user_path, params: {
+			user: {
+			  name: "UserControllerTest:updateuser",
+			  email: "update_user@UserControllerTest",
+			  password: "passw0RD"
+			}
+		}
 		assert_redirected_to user_url
 	end
 
 	test "should not update guest with bad password" do
-		post( :update, 
-			user: {name: "UserControllerTest:updateuser", 
-						email: "update_user@UserControllerTest", 
-						password: "" },
-			current_user_id: people(:guest_updates_bad).id)
+		put user_path, params: {
+			user: {
+				name: "UserControllerTest:updateuser",
+				email: "update_user@UserControllerTest",
+				password: ""
+			}
+		}
 		assert_response :success
 	end
 
 	test "should not update user with bad name" do
-		post( :update, 
-			user: {name: "", 
-						email: "update_user@UserControllerTest", 
-						password: "passw0RD" },
-			current_user_id: people(:user_who_can_update).id)
+		put user_path, params: {
+			user: {
+				name: "",
+				email: "update_user@UserControllerTest",
+				password: "passw0RD"
+			}
+		}
 		assert_response :success
 	end
 

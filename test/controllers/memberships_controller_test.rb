@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class MembershipsControllerTest < ActionController::TestCase
+class MembershipsControllerTest <  ActionDispatch::IntegrationTest
   setup do
     @group = groups(:disciples)
   end
 
   test "lists members of a group" do
-    get :index, group_id: @group.id
+    get group_memberships_path(@group)
     assert_response :success
   end
 end
