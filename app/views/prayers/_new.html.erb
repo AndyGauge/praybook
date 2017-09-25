@@ -9,7 +9,7 @@
             <%= icon :user, library: :font_awesome %>
           </a>
         </span>
-        <textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"><%= @prayer.title -%></textarea> 
+        <textarea placeholder="Our Father ..." class="form-control" name="prayer[title]" id="prayer_title"><%= @prayer.title -%></textarea>
       </div>
     </div>
   </div>
@@ -21,3 +21,6 @@
     <input type="hidden" name="prayer[for][]" value="<%= p.id %>" />
   <% end %>
 <% end %>
+
+<div id="prayer_dialog"></div>
+<%= javascript_pack_tag 'prayer' %>
