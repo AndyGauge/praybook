@@ -9,6 +9,10 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-devtools": "^3.4.1",
+    "webpacker-react": "^0.3.2",
     "whatwg-fetch": "^2.0.3",
     "yarn": ">=0.25.2"
   },
