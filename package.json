@@ -9,6 +9,8 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "webpacker-react": "^0.3.2",
+    "whatwg-fetch": "^2.0.3",
     "yarn": ">=0.25.2"
   },
   "devDependencies": {
