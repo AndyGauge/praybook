@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
     new_friend
   end
   def create
-    if @p = Person.find_by_email(params[:person][:email])
+    if (@p = Person.find_by_email(params[:person][:email])) && params[:person][:email].present?
       @user.friends << @p
     else
       @user.friends.create(friendly_params)
@@ -39,7 +39,7 @@ class FriendsController < ApplicationController
     all_results = Person.where('LOWER(name) LIKE ?', "%#{params[:person][:name].downcase}%") - [@user] if params[:person] && params[:person][:name]
     @people = ([] << (all_results & @user.friends) << (all_results - @user.friends)).flatten
   end
-  
+
   private
   def new_friend
     @friend = Person.new

@@ -35,7 +35,7 @@ class PrayersController < ApplicationController
     @prayer.complete! if @prayer.present?
     redirect_to prayers_path
   end
-  
+
   private
   def new_prayer
     @prayer = @user.prayers.new(params.permit(prayer: [:body])[:prayer])
