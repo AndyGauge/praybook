@@ -23,6 +23,6 @@ prayerPageReady = ->
           modal.find('.modal-title').text("Edit Prayer")
           modal.find('.modal-body').empty().append(response)
           prayerPageReady )
-#$(document).on("page:load", prayerPageReady)
-#$ ->
-#  prayerPageReady()
+$(document).on("page:load", prayerPageReady)
+$ ->
+  prayerPageReady()

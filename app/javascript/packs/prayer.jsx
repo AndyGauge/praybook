@@ -46,11 +46,17 @@ class PrayerDialog extends React.Component {
 
   handleChange(event) {
     event.persist();
-    if (event.key == "Enter") {
+    console.log(event.key)
+    switch (event.key) {
+      case "Enter":
       this.friendClicked(this.state.filter_friend[0])
-    }
-    else {
+      break;
 
+      case "Backspace":
+      this.setState({value: event.target.value.slice(0,-1)})
+      break;
+
+      default:
       this.setState(function (state, props) {
         let value = event.target.value.concat(event.key)
         let last = value.split(" ").pop()
@@ -98,7 +104,7 @@ class PrayerDialog extends React.Component {
      return(
        <div className="prayer" ref={elem => this.listener = elem} id="edit_prayer">
          <label>
-           <textarea placeholder="Our Father ..." className="form-control" name="prayer[title]" id="prayer_title" onKeyPress={this.handleChange} value={this.state.value}></textarea>
+           <textarea placeholder="Our Father ..." className="form-control" name="prayer[title]" id="prayer_title" onKeyDown={this.handleChange} value={this.state.value}></textarea>
            <div className={this.state.menu_open}>
              <ul className="dropdown-menu">
                {friends}
