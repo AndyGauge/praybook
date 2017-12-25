@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Turbolinks from 'turbolinks'
 import WebpackerReact from 'webpacker-react'
 
 class PrayerDialog extends React.Component {
@@ -46,7 +47,6 @@ class PrayerDialog extends React.Component {
 
   handleChange(event) {
     event.persist();
-    console.log(event.key)
     switch (event.key) {
       case "Enter":
       this.friendClicked(this.state.filter_friend[0])
@@ -54,6 +54,26 @@ class PrayerDialog extends React.Component {
 
       case "Backspace":
       this.setState({value: event.target.value.slice(0,-1)})
+      break;
+
+      case "Shift":
+      case "Control":
+      case "Alt":
+      case "Meta":
+      case "ContextMenu":
+      case "PageDown":
+      case "PageUp":
+      case "Home":
+      case "End":
+      case "Insert":
+      case "Delete":
+      case "ArrowLeft":
+      case "ArrowRight":
+      case "ArrowDown":
+      case "ArrowUp":
+      case "Escape":
+      case "Tab":
+      case "CapsLock":
       break;
 
       default:
@@ -103,7 +123,6 @@ class PrayerDialog extends React.Component {
 
      return(
        <div className="prayer" ref={elem => this.listener = elem} id="edit_prayer">
-         <label>
            <textarea placeholder="Our Father ..." className="form-control" name="prayer[title]" id="prayer_title" onKeyDown={this.handleChange} value={this.state.value}></textarea>
            <div className={this.state.menu_open}>
              <ul className="dropdown-menu">
@@ -111,10 +130,10 @@ class PrayerDialog extends React.Component {
              </ul>
            </div>
            {inclusion}
-       </label>
        </div>
      );
    }
 }
 
+Turbolinks.start()
 WebpackerReact.setup({PrayerDialog})
