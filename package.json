@@ -4,7 +4,7 @@
     "yarn": ">=0.25.2"
   },
   "dependencies": {
-    "@rails/webpacker": "^3.0.1",
+    "@rails/webpacker": "^3.5.3",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -13,5 +13,9 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^2.8.2"
+  },
+  "scripts": {
+  "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
+  "heroku-postbuild": "npm run webpack:deploy"
   }
 }
