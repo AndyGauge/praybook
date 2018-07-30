@@ -3,9 +3,9 @@ module LoggedIn
   extend ActiveSupport::Concern
 
   def select_user_from_login
-    @user = current_user.becomes(User)
+    @user = (current_user || guest_user).becomes(User)
   end
-  def current_user
+  def guest_user
     session[:current_user_id] ? Person.find(session[:current_user_id]) : new_guest_user
   end
   def new_guest_user

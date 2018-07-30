@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  
+
+  devise_for :users
   # Main page allows sign in, sign up, and try
   root 'logins#root'
   # User has prayers and praises.  Must log on to edit
   resource :user, :only => [:create, :new, :edit, :show, :update]
-  resources :prayers, except: :destroy do 
+  resources :prayers, except: :destroy do
     post 'complete', on: :member
   end
   resources :praises, except: :destroy
@@ -22,7 +23,9 @@ Rails.application.routes.draw do
     resources :memberships, :only => [:index]
     post 'join', on: :member
   end
-  
+
+  get 'user_root' => 'prayers#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

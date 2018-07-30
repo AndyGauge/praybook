@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   end
   def update
     if @user.update(user_params)
-      @user.update(type: "User") if current_user.guest?
-      redirect_to user_url 
-    else  
-      render :action => 'edit'    
+      @user.update(type: "User") if @user.guest?
+      redirect_to user_url
+    else
+      render :action => 'edit'
     end
   end
   def user_params
