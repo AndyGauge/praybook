@@ -4,6 +4,20 @@ import PropTypes from 'prop-types'
 import Turbolinks from 'turbolinks'
 import WebpackerReact from 'webpacker-react'
 
+class PrayerPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <PrayerDialog/>
+        <PrayerList/>
+      </div>
+    )
+  }
+}
+
 class PrayerDialog extends React.Component {
   constructor(props) {
     super(props);
@@ -135,5 +149,38 @@ class PrayerDialog extends React.Component {
    }
 }
 
+class PrayerList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <PrayerItem/>
+    )
+  }
+}
+
+class PrayerItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="col-sm-3 col-lg-2">
+        <div className="btn-group btn-group-justified" >
+          <div className="btn-group">
+          <button  className="btn btn-danger">Done</button>
+        </div>
+          <div className="btn-group">
+            <button role="button" className="btn btn-success">
+                        <span class="fa-lg fa fa-pencil"></span>Edit
+            </button>
+    </div>
+  </div>
+</div>
+    )
+  }
+}
+
 Turbolinks.start()
-WebpackerReact.setup({PrayerDialog})
+WebpackerReact.setup({PrayerPage})

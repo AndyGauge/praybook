@@ -16,7 +16,7 @@ person_with_email:
 email_user_who_is_valid:
   email: bob@email.com
   name: bob
-  password_digest: <%= BCrypt::Password.create("password") %>
+  encrypted_password: <%= BCrypt::Password.create("password") %>
   type: User
 
 email_user_with_bad_password:
@@ -33,7 +33,7 @@ guest_updates_bad:
 user_who_can_update:
   email: anybody@email.com
   name: notbob
-  password_digest: <%= BCrypt::Password.create("password") %>
+  encrypted_password: <%= BCrypt::Password.create("password") %>
   type: User
   friends: person_with_name, email_user_who_is_valid
 

@@ -1,7 +1,7 @@
 <% content_for :page_subtitle do %>
   Prayers
 <% end %>
-<%= render 'new' %>
+<%= react_component('PrayerPage') %>
 <div id="scripture" class="scripture"></div>
 <div id="prayers">
   <%= render @prayers if @prayers.present? %>

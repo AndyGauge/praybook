@@ -72,7 +72,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 				password: "passw0RD"
 			}
 		}
-		assert_response :success
+		assert_redirected_to user_url
 	end
 
 end
