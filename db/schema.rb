@@ -10,25 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730184331) do
+ActiveRecord::Schema.define(version: 20180730173249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "friends_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "friend_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
   end
 
-  create_table "groups", id: :serial, force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.integer "location_id"
+    t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_groups_on_location_id"
   end
 
-  create_table "locations", id: :serial, force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "city"
     t.string "state"
     t.string "country"
@@ -36,22 +36,22 @@ ActiveRecord::Schema.define(version: 20180730184331) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "memberships", id: :serial, force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "person_id"
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["person_id"], name: "index_memberships_on_person_id"
   end
 
-  create_table "people", id: :serial, force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
+    t.string "encrypted_password"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -64,17 +64,17 @@ ActiveRecord::Schema.define(version: 20180730184331) do
   end
 
   create_table "people_posts", id: false, force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "person_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "person_id", null: false
   end
 
-  create_table "posts", id: :serial, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "person_id"
+    t.bigint "person_id"
     t.index ["person_id"], name: "index_posts_on_person_id"
   end
 
