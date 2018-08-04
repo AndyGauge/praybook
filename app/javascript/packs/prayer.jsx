@@ -12,7 +12,7 @@ class PrayerPage extends React.Component {
     return (
       <div>
         <PrayerDialog/>
-        <PrayerList/>
+        <PrayerList prayers={this.props.prayers}/>
       </div>
     )
   }
@@ -154,8 +154,12 @@ class PrayerList extends React.Component {
     super(props);
   }
   render() {
+    const items = this.props.prayers.map((prayer) =>
+      <PrayerItem prayer={prayer} key={prayer.id} />
+    );
+    console.log(items);
     return (
-      <PrayerItem/>
+      <div>{items}</div>
     )
   }
 }
@@ -166,6 +170,7 @@ class PrayerItem extends React.Component {
   }
   render() {
     return (
+      <div>
       <div className="col-sm-3 col-lg-2">
         <div className="btn-group btn-group-justified" >
           <div className="btn-group">
@@ -173,11 +178,12 @@ class PrayerItem extends React.Component {
         </div>
           <div className="btn-group">
             <button role="button" className="btn btn-success">
-                        <span class="fa-lg fa fa-pencil"></span>Edit
+                        <span className="fa-lg fa fa-pencil"></span>Edit
             </button>
     </div>
   </div>
 </div>
+<div>{this.props.prayer.title}</div></div>
     )
   }
 }

@@ -1,10 +1,9 @@
 <% content_for :page_subtitle do %>
   Prayers
 <% end %>
-<%= react_component('PrayerPage') %>
+<%= react_component('PrayerPage', {prayers: @prayers}) %>
 <div id="scripture" class="scripture"></div>
 <div id="prayers">
-  <%= render @prayers if @prayers.present? %>
-  <%= render @prayers_for if @prayers_for.present? %>
+
 </div>
 <%= render 'modal' %>

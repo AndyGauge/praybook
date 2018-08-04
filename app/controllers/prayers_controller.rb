@@ -2,10 +2,21 @@ class PrayersController < ApplicationController
   include LoggedIn
   include Pageable
   before_action :select_user_from_login
-  before_action :new_prayer, only: ['index', 'show']
+  #before_action :new_prayer, only: ['index', 'show']
 
   def index
-    prayer_page
+    if @user.prayers.any?
+      @prayers = @user.prayers.map do |prayer|
+        { prayor: prayer.person.becomes(User) == @user ? false : prayer.person.name,
+          id: prayer.id,
+          title: prayer.title
+        }
+      end
+    else
+      @prayers = []
+    end
+    new_prayer
+    #prayer_page
   end
   def show
     prayer_page params.permit(:id)[:id].to_i
